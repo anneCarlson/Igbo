@@ -9,9 +9,9 @@
 using namespace std;
 
 #define GAMMA 0.001
-#define ITER 1000
+#define ITER 50000
 #define DIST_POWER 1/4
-#define MIN_COUNT 10
+#define MIN_COUNT 0
 
 typedef unsigned char enc_town;
 typedef int enc_word;
@@ -43,7 +43,7 @@ vector<float> total_word_counts;
 // stores the one change (if it is so) between pairs of words
 map<enc_word, map<enc_word, enc_change> > word_pairs;
 // maps each word to its representation as a vector of characters
-map<wstring, Word> split_dict;
+vector<Word> split_dict;
 
 // maps numbers to the cognate classes they represent; that is, arrays storing each town's member in the class
 map<cog_class, enc_word*> cognate_classes;
@@ -348,8 +348,6 @@ void gather_lists (map<enc_town, map<wstring, float> >& town_dicts, const char* 
 	lists.getline (word, 500);
 	wstring wide_word = UTF8_to_WChar (word);
 	Word word_chars = split_word (wide_word);
-	if (split_dict.count(wide_word) == 0)
-	  split_dict[wide_word] = word_chars;
 	Word::iterator it;
 	for (it=word_chars.begin(); it != word_chars.end(); it++)
 	  chars[curr_town].insert (*it);
@@ -450,7 +448,7 @@ vector<enc_town> find_neighbors (map<enc_town, map<wstring, float> >& town_dicts
 }
 
 // finds all the words in a given town that are a distance of 1 away from a given word in a different town
-vector<pair<wstring, enc_change> > find_potential_cognates (wstring word, map<wstring, float> second_town_dict) {
+/*vector<pair<wstring, enc_change> > find_potential_cognates (wstring word, map<wstring, float> second_town_dict) {
   vector<pair<wstring, enc_change> > to_return;
   map<wstring, float>::iterator it;
   for (it=second_town_dict.begin(); it != second_town_dict.end(); it++) {
@@ -460,7 +458,7 @@ vector<pair<wstring, enc_change> > find_potential_cognates (wstring word, map<ws
     }
   }
   return to_return;
-}
+  }*/
 
 double binomial_prob (float second_arf, float second_arf_total, float first_prob) {
   int c = (int) second_arf;
@@ -492,7 +490,7 @@ enc_change find_change (enc_word first_word, enc_word second_word) {
   //wcout << "identical words: " << word_decoding[first_word] << ", " << word_decoding[second_word] << endl;
   enc_change change = 0;
   if (word_pairs[first_word].count(second_word) == 0) {
-    if (one_change(split_dict[word_decoding[first_word]], split_dict[word_decoding[second_word]], change)) {
+    if (one_change(split_dict[first_word], split_dict[second_word], change)) {
       word_pairs[first_word][second_word] = change;
       word_pairs[second_word][first_word] = (change%512)*512 + (change/512);
     }
@@ -511,7 +509,7 @@ map<enc_change, int> count_adjust (enc_town first_town, enc_town second_town, en
   Word::iterator it;
   // assume that every letter correpsonds with itself, tally up accordingly
   map<enc_change, int> first_counts;
-  Word first_split = split_dict[word_decoding[first_word]];
+  Word first_split = split_dict[first_word];
   for (it=first_split.begin(); it != first_split.end(); it++) {
     enc_change letter = *it*512 + *it;
     if (first_counts.count(letter) == 0)
@@ -533,7 +531,7 @@ map<enc_change, int> count_adjust (enc_town first_town, enc_town second_town, en
     map<enc_change, int> to_return;
     // go through the second word as well, tally up and remove the words that correspond to themselves
     map<enc_change, int> second_counts;
-    Word second_split = split_dict[word_decoding[second_word]];
+    Word second_split = split_dict[second_word];
     for (it=second_split.begin(); it != second_split.end(); it++) {
       enc_change letter = *it*512 + *it;
       if (first_counts.count(letter) == 1) {
@@ -718,6 +716,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
   // assign each word an integer for encoding and increment the counts we need to keep track of
   for (it1=town_dicts.begin(); it1 != town_dicts.end(); it1++) {
     neighbors[it1->first] = find_neighbors (town_dicts, it1->first);
+    it1->second.erase (L"");
     map<wstring, float>::iterator it2;
     for (it2=it1->second.begin(); it2 != it1->second.end(); it2++) {
       enc_word curr_word;
@@ -725,6 +724,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	(*word_encoding)[it2->first] = word_enc_ct;
 	word_decoding.push_back (it2->first);
 	total_word_counts.push_back (it2->second);
+	split_dict.push_back (split_word(it2->first));
 	words_so_far->insert (it2->first);
 	curr_word = word_enc_ct++;
       }
@@ -749,12 +749,14 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
   delete words_so_far;
   delete word_encoding;
   // this part is commented out when we already have its results stored to file (see below)
-  /*for (int i=0; i < town_enc_ct; i++) {
+  for (int i=0; i < town_enc_ct; i++) {
     for (int j=0; j < word_counts[i]; j++) {
-      add_class (cognate_classes, cog_class_ct);
-      cognate_classes[cog_class_ct][i] = word_lists[i][j];
-      class_counts[cog_class_ct] += town_dicts[i][word_decoding[word_lists[i][j]]];
-      cognates[i][word_lists[i][j]] = cog_class_ct++;
+      if (total_word_counts[word_lists[i][j]] >= MIN_COUNT) {
+	add_class (cog_class_ct);
+	cognate_classes[cog_class_ct][i] = word_lists[i][j];
+	class_counts[cog_class_ct] += town_dicts[i][word_decoding[word_lists[i][j]]];
+	cognates[i][word_lists[i][j]] = cog_class_ct++;
+      }
     }
   }
   // make some guesses
@@ -766,7 +768,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
     map<enc_word, cog_class>::iterator it3;
     for (it1=cognates[i].begin(); it1 != cognates[i].end(); it1++) {
       float word_count = town_dict[word_decoding[it1->first]];
-      if (word_count > 1) {
+      if (total_word_counts[it1->first] >= MIN_COUNT && word_count > 1) {
 	enc_word best_match = -1;
 	cog_class best_class = it1->second;
 	float best_ratio = 2;
@@ -780,8 +782,8 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	    }
 	    for (it3=cognates[*it2].begin(); it3 != cognates[*it2].end(); it3++) {
 	      float neighbor_count = neighbor_dict[word_decoding[it3->first]];
-	      if (neighbor_count > 1 && neighbor_count >= .7*word_count && neighbor_count <= 1.3*word_count) {
-		if (cognate_classes[it3->second][i] == -1 && town_dict.count(word_decoding[it3->first]) == 0 && find_change(word_decoding, word_pairs, it1->first, it3->first) > 0) {
+	      if (total_word_counts[it3->first] >= MIN_COUNT && neighbor_count > 1 && neighbor_count >= .7*word_count && neighbor_count <= 1.3*word_count) {
+		if (cognate_classes[it3->second][i] == -1 && town_dict.count(word_decoding[it3->first]) == 0 && find_change(it1->first, it3->first) > 0) {
 		  float curr_ratio = neighbor_count/word_count;
 		  if (curr_ratio < 1)
 		    curr_ratio = 1/curr_ratio;
@@ -805,21 +807,21 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	    enc_word new_neighbor_word = cognate_classes[it1->second][j];
 	    if (j != i && new_neighbor_word >= 0) {
 	      //wcout << word_decoding[it1->first] << "\t" << word_decoding[new_neighbor_word] << endl;
-	      enc_change change = find_change (word_decoding, word_pairs, new_neighbor_word, it1->first);
+	      enc_change change = find_change (new_neighbor_word, it1->first);
 	      //wcout << change << endl;
-	      add_counts (word_decoding, word_pairs, corr_counts[j][i], corr_counts[i][j], corr_totals[j][i], corr_totals[i][j], new_neighbor_word, it1->first);
+	      add_counts (i, j, new_neighbor_word, it1->first, change);
 	      //if (change > 0)
 		//wcout << represent_change (change) << endl;
 	    }
 	  }
 	  if (it1->second != old_class)
-	    remove_class (cognate_classes, class_counts, empty_classes, old_class);
+	    remove_class (old_class);
 	}
       }
     }
-  }*/
+  }
   // read initial classes from file
-  ifstream initial (initfile);
+  /*ifstream initial (initfile);
   add_class (cog_class_ct);
   bool empty_class = true;
   while (initial.good()) {
@@ -863,12 +865,12 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
       }
     }
   }
-  initial.close();
+  initial.close();*/
   // Gibbs sampling process
   srand (0);
   int iter = 0;
   while (iter < ITER) {
-    if (iter % 10 == 0)
+    if (iter % 100 == 0)
       wcout << iter << endl;
     ++iter;
     // choose a random word in a random town
@@ -925,7 +927,9 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	  }
 	  // if a class doesn't have at least one neighbor a distance of 1 away from the word, skip it
 	  else if (neighbor_word >= 0) {
+	    //wcout << neighbor_word << "\t" << curr_word_enc << endl;
 	    if (find_change (neighbor_word, curr_word_enc) > 0) {
+	      //wcout << 9 << endl;
 	      has_near_neighbor = true;
 	      break;
 	    }
@@ -941,8 +945,8 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	// start with the language model component
 	change_prob = (class_counts[new_class] + curr_count)/arf_total;
 	// fudge factor to encourage merging
-	//if (new_class == curr_class && singleton)
-	//change_prob *= pow (.02, split_dict[curr_word].size());
+	if (new_class == curr_class && singleton)
+	  change_prob *= pow (.02, split_dict[curr_word_enc].size());
 	// calculate the probability of the given word being a cognate of each of its potential neighbors
 	for (it=neighbors[curr_town].begin(); it != neighbors[curr_town].end(); it++) {
 	  enc_word new_neighbor_word = cognate_classes[new_class][*it];
