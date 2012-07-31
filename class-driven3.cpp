@@ -943,18 +943,30 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
       // if the above case is true, we need to calculate the probability
       if (!skip) {
 	// start with the language model component
-	change_prob = (class_counts[new_class] + curr_count)/arf_total;
+	change_prob = 1;
+	for(int i=0; i<town_enc_ct; i++)
+	{
+	  enc_word word_from_neighbor= cognate_classes[new_class][i];
+	  double exp_prob *=(class_counts[new_class] + curr_count)/arf_total;
+	  float count=0;
+	  if(word_from_neighbor>=0)
+	  {
+	    count=town_dicts[i][word_decoding[word_from_neighbor]]
+	  }
+	  change_prob*=binomial_prob (count, arf_totals[curr_town], exp_prob) ;
+	}
+	//(class_counts[new_class] + curr_count)/arf_total;
 	// fudge factor to encourage merging
-	if (new_class == curr_class && singleton)
-	  change_prob *= pow (.02, split_dict[curr_word_enc].size());
+	//if (new_class == curr_class && singleton)
+	//  change_prob *= pow (.02, split_dict[curr_word_enc].size());
 	// calculate the probability of the given word being a cognate of each of its potential neighbors
 	for (it=neighbors[curr_town].begin(); it != neighbors[curr_town].end(); it++) {
 	  enc_word new_neighbor_word = cognate_classes[new_class][*it];
 	  if (new_neighbor_word >= 0) {
 	    // the probability of the neighboring word
-	    double exp_prob = town_dicts[*it][word_decoding[new_neighbor_word]]/arf_totals[*it];
+	    //double exp_prob = town_dicts[*it][word_decoding[new_neighbor_word]]/arf_totals[*it];
 	    // multiply by the product of the distributional and phonological probabilities of cognate correspondence for each neighbor in the cognate class
-	    change_prob *= binomial_prob (curr_count, arf_totals[curr_town], exp_prob) * word_match_prob (*it, curr_town, new_neighbor_word, curr_word_enc, true, find_change (new_neighbor_word, curr_word_enc));
+	    change_prob *=  word_match_prob (*it, curr_town, new_neighbor_word, curr_word_enc, true, find_change (new_neighbor_word, curr_word_enc))* word_match_prob (curr_town, *it, curr_word_enc, new_neighbor_word, true, find_change ( curr_word_enc, new_neighbor_word));
 	  }
 	}
       }
