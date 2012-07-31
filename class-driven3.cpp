@@ -12,6 +12,7 @@ using namespace std;
 #define ITER 1000
 #define DIST_POWER 1/4
 #define MIN_COUNT 10
+//testing git
 
 typedef unsigned char enc_town;
 typedef int enc_word;
