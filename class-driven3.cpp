@@ -9,7 +9,7 @@
 using namespace std;
 
 #define GAMMA 0.001
-#define ITER 50000
+#define ITER 1
 #define DIST_POWER 1/4
 #define MIN_COUNT 0
 
@@ -469,7 +469,7 @@ double binomial_prob (float second_arf, float second_arf_total, float first_prob
     to_return *= first_prob*(n-i)/i;
   while (++i <= n)
     to_return *= 1-first_prob;
-  return pow (to_return, DIST_POWER);
+  return to_return;
 }
 
 void add_class (cog_class to_use) {
@@ -666,8 +666,6 @@ void remove_counts (enc_town first_town, enc_town second_town, enc_word first_wo
 
 double word_match_prob (enc_town first_town, enc_town second_town, enc_word first_word, enc_word second_word, bool adding_word, enc_change change) {
   double prob_to_return = 1;
-  if (change == 0 && first_word != second_word)
-    return 0;
   map<enc_change, int> change_counts = count_adjust (first_town, second_town, first_word, second_word, change);
   map<enc_change, int>::iterator it;
   int a_to_b;
@@ -684,6 +682,32 @@ double word_match_prob (enc_town first_town, enc_town second_town, enc_word firs
     }
   }
   return prob_to_return;
+}
+
+double total_log_prob (map<enc_town, map<wstring, float> >& town_dicts) {
+  double to_return = 0;
+  map<cog_class, enc_word*>::iterator it1;
+  vector<enc_town>::iterator it2;
+  for (it1=cognate_classes.begin(); it1 != cognate_classes.end(); it1++) {
+    wcout << it1->first << "\t" << to_return << endl;
+    double exp_prob = class_counts[it1->first]/arf_total;
+    for (int i=0; i < town_enc_ct; i++) {
+      enc_word curr_word = it1->second[i];
+      if (curr_word >= 0) {
+	float curr_count = town_dicts[i][word_decoding[curr_word]];
+	to_return += log(binomial_prob(curr_count, arf_totals[i], exp_prob));
+	for (it2=neighbors[i].begin(); it2 != neighbors[i].end(); it2++) {
+	  enc_word new_neighbor_word = it1->second[*it2];
+	  if (new_neighbor_word >= 0) {
+	    to_return += log(word_match_prob(*it2, i, new_neighbor_word, curr_word, false, find_change(new_neighbor_word, curr_word))) + log(word_match_prob(i, *it2, curr_word, new_neighbor_word, false, find_change(curr_word, new_neighbor_word)));
+	  }
+	}
+      }
+      else
+	to_return += log(pow(1-exp_prob, arf_totals[i]));
+    }
+  }
+  return to_return;
 }
 
 void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char* out1, const char* out2, const char* initfile) {
@@ -871,7 +895,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
   int iter = 0;
   while (iter < ITER) {
     if (iter % 100 == 0)
-      wcout << iter << endl;
+      wcout << iter << "\t" << total_log_prob(town_dicts) << endl;
     ++iter;
     // choose a random word in a random town
     enc_town curr_town = rand() % town_enc_ct;
