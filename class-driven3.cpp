@@ -8,9 +8,9 @@
 #include "compare-with-lm2.h"
 using namespace std;
 
-#define GAMMA 0.001
-#define ITER 1
-#define DIST_POWER 1/4
+#define GAMMA 0.0001
+#define ITER 1000
+#define DIST_POWER 1
 #define MIN_COUNT 0
 
 typedef unsigned char enc_town;
@@ -469,11 +469,12 @@ double binomial_prob (float second_arf, float second_arf_total, float first_prob
     to_return *= first_prob*(n-i)/i;
   while (++i <= n)
     to_return *= 1-first_prob;
-  return to_return;
+  return pow (to_return, DIST_POWER);
 }
 
 void add_class (cog_class to_use) {
   cognate_classes[to_use] = new enc_word [town_enc_ct];
+  class_counts[to_use] = 0;
   for (int i=0; i < town_enc_ct; i++)
     cognate_classes[to_use][i] = -1;
 }
@@ -518,8 +519,10 @@ map<enc_change, int> count_adjust (enc_town first_town, enc_town second_town, en
   }
   // if the words are one apart, fix this assumption by working the one differing correspondence into account
   if (change > 0) {
-    if (change/512 > 0)
-      --first_counts[(change/512)*512+(change/512)];
+    if (change/512 > 0) {
+      enc_change letter = (change/512)*512 + (change/512);
+      --first_counts[letter];
+    }
     ++first_counts[change];
     return first_counts;
   }
@@ -673,7 +676,7 @@ double word_match_prob (enc_town first_town, enc_town second_town, enc_word firs
   for (it=change_counts.begin(); it != change_counts.end(); it++) {
     if (it->second > 0) {
       a_to_b = corr_counts[first_town][second_town][it->first];
-      a_to_anything = corr_totals[second_town][first_town][it->first/512];
+      a_to_anything = corr_totals[first_town][second_town][it->first/512];
       if (adding_word) {
 	a_to_b += it->second;
 	a_to_anything += it->second;
@@ -689,7 +692,7 @@ double total_log_prob (map<enc_town, map<wstring, float> >& town_dicts) {
   map<cog_class, enc_word*>::iterator it1;
   vector<enc_town>::iterator it2;
   for (it1=cognate_classes.begin(); it1 != cognate_classes.end(); it1++) {
-    wcout << it1->first << "\t" << to_return << endl;
+    //wcout << it1->first << "\t" << to_return << endl;
     double exp_prob = class_counts[it1->first]/arf_total;
     for (int i=0; i < town_enc_ct; i++) {
       enc_word curr_word = it1->second[i];
@@ -700,11 +703,12 @@ double total_log_prob (map<enc_town, map<wstring, float> >& town_dicts) {
 	  enc_word new_neighbor_word = it1->second[*it2];
 	  if (new_neighbor_word >= 0) {
 	    to_return += log(word_match_prob(*it2, i, new_neighbor_word, curr_word, false, find_change(new_neighbor_word, curr_word))) + log(word_match_prob(i, *it2, curr_word, new_neighbor_word, false, find_change(curr_word, new_neighbor_word)));
+	    //wcout << i << "\t" << curr_word << "\t" << *it2 << "\t" << new_neighbor_word << "\t" << word_match_prob(*it2, i, new_neighbor_word, curr_word, false, find_change(new_neighbor_word, curr_word)) << "\t" << word_match_prob(i, *it2, curr_word, new_neighbor_word, false, find_change(curr_word, new_neighbor_word)) << endl;
 	  }
 	}
       }
       else
-	to_return += log(pow(1-exp_prob, arf_totals[i]));
+	to_return += log(pow(pow(1-exp_prob, arf_totals[i]), DIST_POWER));
     }
   }
   return to_return;
@@ -833,7 +837,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	      //wcout << word_decoding[it1->first] << "\t" << word_decoding[new_neighbor_word] << endl;
 	      enc_change change = find_change (new_neighbor_word, it1->first);
 	      //wcout << change << endl;
-	      add_counts (i, j, new_neighbor_word, it1->first, change);
+	      add_counts (j, i, new_neighbor_word, it1->first, change);
 	      //if (change > 0)
 		//wcout << represent_change (change) << endl;
 	    }
@@ -894,8 +898,8 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
   srand (0);
   int iter = 0;
   while (iter < ITER) {
-    if (iter % 100 == 0)
-      wcout << iter << "\t" << total_log_prob(town_dicts) << endl;
+    if (iter % 5000 == 0)
+      wcout << iter << "\t" << total_log_prob(town_dicts) << "\t" << cognate_classes.size() << endl;
     ++iter;
     // choose a random word in a random town
     enc_town curr_town = rand() % town_enc_ct;
@@ -912,8 +916,18 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
     cognate_classes[curr_class][curr_town] = -1;
     class_counts[curr_class] -= curr_count;
     bool singleton = false;
+    cog_class to_create;
     if (class_counts[curr_class] == 0)
       singleton = true;
+    else {
+      if (empty_classes.empty())
+	to_create = cog_class_ct++;
+      else {
+	to_create = empty_classes.front();
+	empty_classes.pop();
+      }
+      add_class (to_create);
+    }
     vector<enc_town>::iterator it;
     // adjust all the counts with its neighbors when we remove the word
     for (int i=0; i < town_enc_ct; i++) {
@@ -958,9 +972,11 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	      break;
 	    }
 	  }
-	  if (!has_near_neighbor && new_class != curr_class) {
-	    change_prob = 0;
-	    skip = true;
+	  if (!has_near_neighbor) {
+	    if ((singleton && new_class != curr_class) || (!singleton && new_class != to_create)) {
+	      change_prob = 0;
+	      skip = true;
+	    }
 	  }
 	}
       }
@@ -968,16 +984,18 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
       if (!skip) {
 	// start with the language model component
 	change_prob = 1;
-	for(int i=0; i<town_enc_ct; i++)
-	{
-	  enc_word word_from_neighbor= cognate_classes[new_class][i];
-	  double exp_prob *=(class_counts[new_class] + curr_count)/arf_total;
+	for(int i=0; i<town_enc_ct; i++) {
+	  enc_word word_from_neighbor = cognate_classes[new_class][i];
+	  double exp_prob = (class_counts[new_class] + curr_count)/arf_total;
 	  float count=0;
 	  if(word_from_neighbor>=0)
 	  {
-	    count=town_dicts[i][word_decoding[word_from_neighbor]]
+	    count=town_dicts[i][word_decoding[word_from_neighbor]];
+	    change_prob*=binomial_prob (count, arf_totals[i], exp_prob);
 	  }
-	  change_prob*=binomial_prob (count, arf_totals[curr_town], exp_prob) ;
+	  else {
+	    change_prob *= pow(pow(1-exp_prob, arf_totals[i]), DIST_POWER);
+	  }
 	}
 	//(class_counts[new_class] + curr_count)/arf_total;
 	// fudge factor to encourage merging
@@ -1007,11 +1025,31 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
     if (total_prob == 0)
       chosen = curr_class;
     else {
+      bool found = false;
       for (int i=0; i < cog_class_ct; i++) {
+	if (class_probs[i] > 0) {
+	  cognate_classes[i][curr_town] = curr_word_enc;
+	  class_counts[i] += town_dicts[curr_town][word_decoding[curr_word_enc]];
+	  cognates[curr_town][curr_word_enc] = i;
+	  for (int j=0; j < town_enc_ct; j++) {
+	    enc_word neighbor_word = cognate_classes[i][j];
+	    if (j != curr_town && neighbor_word >= 0)
+	      add_counts (j, curr_town, neighbor_word, curr_word_enc, find_change(neighbor_word, curr_word_enc));
+	  }
+	  wcout << curr_word << "\t" << curr_class << "\t" << i << "\t" << class_probs[i] << "\t" << total_log_prob (town_dicts) << endl;
+	  for (int j=0; j < town_enc_ct; j++) {
+	    enc_word neighbor_word = cognate_classes[i][j];
+	    if (j != curr_town && neighbor_word >= 0)
+	      remove_counts (j, curr_town, neighbor_word, curr_word_enc, find_change(neighbor_word, curr_word_enc));
+	  }
+	  cognate_classes[i][curr_town] = -1;
+	  class_counts[i] -= town_dicts[curr_town][word_decoding[curr_word_enc]];
+	}
 	running_total += class_probs[i]*RAND_MAX/total_prob;
-	if (target < running_total) {
+	if (target < running_total && !found) {
 	  chosen = i;
-	  break;
+	  found = true;
+	  //break;
 	}
       }
     }
@@ -1019,14 +1057,17 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
     // if the word's former class is empty, remove it
     if (chosen != curr_class && singleton)
       remove_class (curr_class);
+    else if (!singleton && chosen != to_create)
+      remove_class (to_create);
     // mark the connection everywhere, adjust the sound correspondence counts of the cognate class's other members
     cognate_classes[chosen][curr_town] = curr_word_enc;
     class_counts[chosen] += curr_count;
     cognates[curr_town][curr_word_enc] = chosen;
     for (int i=0; i < town_enc_ct; i++) {
       enc_word new_neighbor_word = cognate_classes[chosen][i];
-      if (i != curr_town && new_neighbor_word >= 0)
+      if (i != curr_town && new_neighbor_word >= 0) {
 	add_counts (i, curr_town, new_neighbor_word, curr_word_enc, find_change (new_neighbor_word, curr_word_enc));
+      }
     }
   }
   // print out all the sound correspondence counts and cognate classes
@@ -1037,7 +1078,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	outfile << town_decoding[i].first << "," << town_decoding[i].second << "\t" << town_decoding[j].first << "," << town_decoding[j].second << endl;
 	multimap<int, enc_change> counts;
 	for (int k=0; k < (enc_ct+1)*512; k++) {
-	  if (corr_counts[i][j][k] > 0 && k/512 != k%512)
+	  if (corr_counts[i][j][k] != 0 && k/512 != k%512)
 	    counts.insert (pair<int, enc_change> (corr_counts[i][j][k], k));
 	}
 	multimap<int, enc_change>::reverse_iterator it;
@@ -1052,7 +1093,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
   for (it4=cognate_classes.begin(); it4 != cognate_classes.end(); it4++) {
     for (int i=0; i < town_enc_ct; i++) {
       if (it4->second[i] >= 0)
-	outfile2 << town_decoding[i].first << "," << town_decoding[i].second << "\t" << it4->second[i] << "\t" << WChar_to_UTF8 (word_decoding[it4->second[i]].c_str()) << endl;
+	outfile2 << it4->first << "\t" << town_decoding[i].first << "," << town_decoding[i].second << "\t" << it4->second[i] << "\t" << WChar_to_UTF8 (word_decoding[it4->second[i]].c_str()) << endl;
       //outfile2 << i << "\t" << it4->second[i] << "\t" << WChar_to_UTF8 (word_decoding[it4->second[i]].c_str()) << endl;
     }
     outfile2 << endl;
