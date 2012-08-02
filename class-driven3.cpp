@@ -10,10 +10,10 @@ using namespace std;
 
 #define GAMMA 0.0001
 #define DELTA 0.000
-#define ITER 100000
+#define ITER 500000
 #define INCR 2500
 #define DIST_POWER 1
-#define MIN_COUNT 0
+#define MIN_COUNT 5
 
 typedef unsigned char enc_town;
 typedef int enc_word;
@@ -720,7 +720,6 @@ double total_log_prob (map<enc_town, map<wstring, float> >& town_dicts) {
   int k=0;
   for (it1=cognate_classes.begin(); it1 != cognate_classes.end(); it1++) {
     k++;
-    //wcout << it1->first << "\t" << to_return << endl;
     double exp_prob = class_counts[it1->first]/arf_total;
     for (int i=0; i < town_enc_ct; i++) {
       enc_word curr_word = it1->second[i];
@@ -731,7 +730,7 @@ double total_log_prob (map<enc_town, map<wstring, float> >& town_dicts) {
 	  enc_word new_neighbor_word = it1->second[*it2];
 	  if (new_neighbor_word >= 0) {
 	    to_return += log(word_match_prob(i, *it2, curr_word, new_neighbor_word, false, find_change(curr_word, new_neighbor_word)));
-	    //wcout << it1->first << "\t" << i << "\t" << curr_word << "\t" << *it2 << "\t" << new_neighbor_word << "\t" << word_match_prob(*it2, i, new_neighbor_word, curr_word, false, find_change(new_neighbor_word, curr_word)) << "\t" << word_match_prob(i, *it2, curr_word, new_neighbor_word, false, find_change(curr_word, new_neighbor_word)) << "\t" << binomial_prob(curr_count, arf_totals[i], exp_prob) << "\t" << to_return << endl;
+	    //wcout << it1->first << "\t" << i << "\t" << curr_word << "\t" << *it2 << "\t" << new_neighbor_word << "\t" << word_match_prob(i, *it2, curr_word, new_neighbor_word, false, find_change(curr_word, new_neighbor_word)) << "\t" << binomial_prob(curr_count, arf_totals[i], exp_prob) << "\t" << to_return << endl;
 	  }
 	}
       }
@@ -838,7 +837,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	      best_class = cognates[*it2][it1->first];
 	      break;
 	    }
-	    for (it3=cognates[*it2].begin(); it3 != cognates[*it2].end(); it3++) {
+	    /*for (it3=cognates[*it2].begin(); it3 != cognates[*it2].end(); it3++) {
 	      float neighbor_count = neighbor_dict[word_decoding[it3->first]];
 	      if (total_word_counts[it3->first] >= MIN_COUNT && neighbor_count > 1 && neighbor_count >= .7*word_count && neighbor_count <= 1.3*word_count) {
 		if (cognate_classes[it3->second][i] == -1 && town_dict.count(word_decoding[it3->first]) == 0 && find_change(it1->first, it3->first) > 0) {
@@ -852,7 +851,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 		  }
 		}
 	      }
-	    }
+	      }*/
 	  }
 	}
 	if (best_match >= 0) {
@@ -928,8 +927,9 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
   srand (0);
   int iter = 0;
   while (iter < ITER) {
-    if (iter % INCR == 0)
+    if (iter % INCR == 0) {
       wcout << iter << "\t" << total_log_prob(town_dicts) << "\t" << cognate_classes.size() << endl;
+    }
     ++iter;
     // choose a random word in a random town
     enc_town curr_town = rand() % town_enc_ct;
@@ -947,7 +947,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
     class_counts[curr_class] -= curr_count;
     bool singleton = false;
     cog_class to_create;
-    if (class_counts[curr_class] == 0)
+    if (class_counts[curr_class] < .01)
       singleton = true;
     else {
       if (empty_classes.empty())
@@ -1014,7 +1014,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
       if (!skip) {
 	// start with the language model component
 	double old_exp_prob = (class_counts[new_class])/(arf_total);
-	double new_exp_prob = (class_counts[new_class] + curr_count)/(arf_total + cog_class_ct);
+	double new_exp_prob = (class_counts[new_class] + curr_count)/(arf_total);
 	double old_dist_prob = pow(pow(1-old_exp_prob, arf_totals[curr_town]), DIST_POWER);
 	double new_dist_prob = binomial_prob (curr_count, arf_totals[curr_town], new_exp_prob);
 	change_prob = new_dist_prob/old_dist_prob;
@@ -1055,7 +1055,8 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
     // randomly assign our word to a cognate class, weighted by the probabilities of it going there as calculated above
     double running_total = 0;
     int target = rand();
-    cog_class chosen = -1;
+    cog_class chosen = curr_class;
+    double top_prob = 0;
     for (int i=0; i < cog_class_ct; i++) {
       /*if (class_probs[i] > 0) {
 	cognate_classes[i][curr_town] = curr_word_enc;
@@ -1080,8 +1081,11 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	chosen = i;
 	break;
       }
+      /*if (class_probs[i] > top_prob) {
+	chosen = i;
+	top_prob = class_probs[i];
+	}*/
     }
-    //wcout << chosen << endl;
     // if the word's former class is empty, remove it
     if (chosen != curr_class && singleton)
       remove_class (curr_class);
@@ -1126,7 +1130,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
     }
     outfile2 << endl;
   }
-  }
+}
 
 int main (int argc, char* argv[]) {
   map<enc_town, map<wstring, float> > town_dicts;
