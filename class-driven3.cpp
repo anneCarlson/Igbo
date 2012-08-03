@@ -24,7 +24,7 @@ typedef int enc_word;
 typedef int cog_class;
 
 //time variables for keeping track of time
-int totals[11];
+double totals[11];
 //typedef std::chrono::high_resolution_clock Clock;
 //typedef std::chrono::milliseconds milliseconds;
 double times[11];
@@ -1288,7 +1288,7 @@ int main (int argc, char* argv[]) {
   for (int i=0; i<=11; i++)
   {
     times[i]=0.0;
-    totals[i]=0;
+    totals[i]=0.0;
   }
   
   map<enc_town, map<wstring, float> > town_dicts;
