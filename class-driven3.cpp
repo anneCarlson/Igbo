@@ -41,6 +41,8 @@ map<enc_word, cog_class>* cognates;
 short*** corr_counts;
 // tallies of sounds in each pair of towns (i.e., in the set of words from those two towns that are in the same cognate class)
 short*** corr_totals;
+// roughly captures the phonetic distance between pairs of characters
+short** char_distances;
 
 // maps numbers to the words they represent
 vector<wstring> word_decoding;
@@ -381,6 +383,80 @@ void gather_lists (map<enc_town, map<wstring, float> >& town_dicts, const char* 
   arf_totals = new float [town_enc_ct];
   for (int i=0; i < town_enc_ct; i++)
     arf_totals[i] = arfs[i];
+}
+
+void char_distance_calc (const char* charfile) {
+  char_distances = new short* [enc_ct];
+  for (int i=0; i < enc_ct; i++) {
+    char_distances[i] = new short [enc_ct];
+  }
+  short features [enc_ct][7];
+  ifstream chars (charfile);
+  while (chars.good()) {
+    enc_char curr_enc_char;
+    char char_string [5];
+    chars.getline (char_string, 50, '\t');
+    stringstream char_stream (char_string);
+    char_stream >> curr_enc_char;
+    char_stream.flush();
+    chars.getline (char_string, 50, '\t');
+    wstring curr_char = UTF8_to_WChar (char_string);
+    for (int i=0; i < 7; i++) {
+      short curr_feature;
+      features[curr_enc_char][i] = chars.get()-48;
+    }
+    //wcout << curr_enc_char << "\t" << features[curr_enc_char][0] << "," << features[curr_enc_char][1] << "," << features[curr_enc_char][2] << "," << features[curr_enc_char][3] << "," << features[curr_enc_char][4] << "," << features[curr_enc_char][5] << "," << features[curr_enc_char][6] << endl;
+    chars.ignore (1);
+    if (chars.peek() == -1)
+      chars.ignore (1);
+  }
+  char_distances[0][0] = 1;
+  for (int i=1; i < enc_ct; i++) {
+    if (features[i][0] == 0) {
+      char_distances[0][i] = pow(3,6);
+      char_distances[i][0] = char_distances[0][i];
+    }
+    else if (features[i][0] == 1) {
+      char_distances[0][i] = 4*3*2;
+      char_distances[i][0] = char_distances[0][i];
+    }
+    else {
+      char_distances[0][i] = 2*2*2;
+      char_distances[i][0] = char_distances[0][i];
+    }
+    for (int j=i; j < enc_ct; j++) {
+      if (features[i][0] == 0) {
+	if (features[j][0] == 0) {
+	  char_distances[i][j] = 1;
+	  char_distances[j][i] = char_distances[i][j];
+	}
+	else {
+	  char_distances[i][j] = pow(3,6);
+	  char_distances[j][i] = char_distances[i][j];
+	}
+      }
+      else if (features[i][0] == 1) {	
+	if (features[j][0] == 1) {
+	  char_distances[i][j] = (abs(features[j][1]-features[i][1])+1)*(abs(features[j][2]-features[i][2])+1)*(abs(features[j][3]-features[i][3])+1)*(abs(features[j][4]-features[i][4])+1);
+	  char_distances[j][i] = char_distances[i][j];
+	}
+	else {
+	  char_distances[i][j] = pow(3,5);
+	  char_distances[j][i] = char_distances[i][j];
+	}
+      }
+      else {
+	if (features[j][0] == 1) {
+	  char_distances[i][j] = pow(3,5);
+	  char_distances[j][i] = char_distances[i][j];
+	}
+	else {
+	  char_distances[i][j] = (abs(features[j][4]-features[i][4])+1)*(abs(features[j][5]-features[i][5])+1)*(abs(features[j][6]-features[i][6])+1);
+	  char_distances[j][i] = char_distances[i][j];
+	}
+      }
+    }
+  }
 }
 
 enc_change invert_change (enc_change change) {
@@ -823,23 +899,8 @@ double word_match_prob (enc_town first_town, enc_town second_town, enc_word firs
 	a_to_b += it->second;
 	a_to_anything += it->second;
       }
-      prob_to_return *= pow((a_to_b + GAMMA)/(a_to_anything + (char_counts[second_town]*GAMMA)), it->second);
-      /*if(prob_to_return<0)
-      {
-	cout << "prob_to_return: " << prob_to_return << "\n";
-	cout << "a_to_b: " << a_to_b << "\n";
-	cout << "corr_counts[first_town][second_town][it->first]: " << corr_counts[first_town][second_town][it->first] << "\n";
-	//cout << "char_counts[second_town]: " << char_counts[second_town] << "\n";
-	cout << "\n";
-      }*/
-      //cout << "here!\n";
-      /*if(a_to_b<=0||a_to_anything<=0||char_counts[second_town]<=0)
-      {
-	cout << "a_to_b: " << a_to_b << "\n";
-	cout << "a_to_anything: " << a_to_anything << "\n";
-	cout << "char_counts[second_town]: " << char_counts[second_town] << "\n";
-	cout << "\n";
-      }*/
+      prob_to_return *= pow((1/char_distances[it->first/512][it->first%512])*(a_to_b + GAMMA)/(a_to_anything + (char_counts[second_town]*GAMMA)), it->second);
+
     }
   }
     gettimeofday(&time_end,NULL);
@@ -1190,7 +1251,6 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	  }
 	  //change_prob*=binomial_prob (count, arf_totals[curr_town], exp_prob) ;
 	}
-	//change_prob *= new_dist_prob/old_dist_prob;
 	// calculate the probability of the given word being a cognate of each of its potential neighbors
 	for (it=neighbors[curr_town].begin(); it != neighbors[curr_town].end(); it++) {
 	  enc_word new_neighbor_word = cognate_classes[new_class][*it];
@@ -1282,6 +1342,9 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
     }
     outfile2 << endl;
   }
+  ofstream outfile3 ("gibbs-results/chars.txt");
+  for (int i=0; i < enc_ct; i++)
+    outfile3 << i << "\t" << WChar_to_UTF8 (decoding[i].c_str()) << endl;
 }
 
 int main (int argc, char* argv[]) {
@@ -1298,10 +1361,9 @@ int main (int argc, char* argv[]) {
   encoding[L"!"] = enc_ct;
   decoding[enc_ct++] = L"!";
   gather_lists (town_dicts, argv[1]);
-  
-  //enc_town curr_town = rand() % town_enc_ct; 
+  char_distance_calc (argv[2]);
   cout << "finding cognates:";
-  find_cognates (town_dicts, argv[3], argv[4], argv[2]);
+  find_cognates (town_dicts, argv[4], argv[5], argv[3]);
   cout.precision(15);
   cout << "\n\n\n";
   cout << "Times:\n";
