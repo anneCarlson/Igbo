@@ -220,6 +220,58 @@ void vectorize_all (map<Town, vector<wstring> >& town_vectors, const char* corpf
   }
 }
 
+//writes bigram counts to outFile
+void write_bigrams_to_file(map<Town, vector<wstring> >& town_vectors, char* outFile)
+{
+  ofstream output (outFile);
+  map<Town, vector<wstring>>::iterator i;
+  for(i = town_vectors.begin(); i != town_vectors.end(); i++)
+  {
+	Town thisTown = i->first;
+	//cout << "Coordinates:\t" << thisTown.first << "," << thisTown.second << "\n";
+	vector<wstring> words = i->second;
+	map<pair<wstring,wstring>, int > towns_map;
+	wstring first_word;
+	wstring second_word;
+	vector<wstring>::iterator j;
+	for(j = words.begin(); j != words.end(); j++)
+	{
+	    if(j == words.begin())
+		first_word=*j;
+	    else
+	    {
+		second_word=first_word;
+		first_word=*j;
+		pair<wstring,wstring> bigram;
+		bigram.first=first_word;
+		bigram.second=second_word;
+		if(towns_map.find(bigram)==towns_map.end())
+		{
+		    towns_map[bigram]=1;
+		}
+		else
+		{
+		    towns_map[bigram]=towns_map[bigram]+1;
+		}
+		/*if(first_word.compare(parse(UTF8_to_WChar(",")))==0&&second_word.compare(parse (UTF8_to_WChar("ya")))==0)
+		{
+		    cout << towns_map[bigram] << "\n";
+		}*/
+	    }
+	}
+	output << "Coordinates:\t" << thisTown.first << "," << thisTown.second << endl;
+	multimap<int, pair<wstring,wstring>> inverse_town_dict;
+	map<pair<wstring,wstring>, int>::iterator it;
+	for (it=towns_map.begin(); it != towns_map.end(); it++)
+	    inverse_town_dict.insert(pair<int, pair<wstring,wstring>> (it->second, it->first));
+	multimap<int, pair<wstring,wstring>>::reverse_iterator it3;
+	for (it3=inverse_town_dict.rbegin(); it3 != inverse_town_dict.rend(); it3++)
+	    output << it3->first << '\t' << WChar_to_UTF8(it3->second.second.c_str())<< '\t' << WChar_to_UTF8(it3->second.first.c_str()) << endl;
+	output << '\n';
+   }
+   
+}
+
 // calculates the average reduced frequency of a token (normalizing for burstiness)
 float avg_red_freq (vector<wstring>& corpus, wstring word) {
   vector<wstring>::iterator it1;
@@ -465,7 +517,7 @@ enc_change invert_change (enc_change change) {
   return second*512 + first;
 }
 
-void print_arfs (map<Town, map<wstring, float> >& town_dicts, const char* outfile) {
+/*void print_arfs (map<Town, map<wstring, float> >& town_dicts, const char* outfile) {
   ofstream output (outfile);
   map<Town, map<wstring, float> >::iterator it1;
   for (it1=town_dicts.begin(); it1 != town_dicts.end(); it1++) {
@@ -479,7 +531,7 @@ void print_arfs (map<Town, map<wstring, float> >& town_dicts, const char* outfil
       output << it3->first << '\t' << WChar_to_UTF8(it3->second.c_str()) << endl;
     output << '\n';
   }
-}
+}*/
 
 void print_changes (map<Town, map<wstring, float> >& town_dicts, map<enc_change, map<wstring, wstring> >& change_dict, Town first_town, Town second_town, const char* outfile) {
   
@@ -1360,7 +1412,12 @@ int main (int argc, char* argv[]) {
   encoding[L""] = 0;
   encoding[L"!"] = enc_ct;
   decoding[enc_ct++] = L"!";
-  gather_lists (town_dicts, argv[1]);
+  
+  map<Town, vector<wstring> > town_vectors;
+  vectorize_all (town_vectors, argv[1]);
+  write_bigrams_to_file(town_vectors, argv[2]);
+  
+  /*gather_lists (town_dicts, argv[1]);
   char_distance_calc (argv[2]);
   cout << "finding cognates:";
   find_cognates (town_dicts, argv[4], argv[5], argv[3]);
@@ -1374,5 +1431,5 @@ int main (int argc, char* argv[]) {
     //<< "\t" << (times[i].count()/totals[i])
   }
   cout << "end times\n";
-  return 0;
+  return 0;*/
 }
