@@ -14,10 +14,10 @@ using namespace std;
 
 #define GAMMA 0.0001
 #define DELTA 0.000
-#define ITER 5000000
+#define ITER 10000000
 #define INCR 2500
 #define DIST_POWER 1
-#define MIN_COUNT 2
+#define MIN_COUNT 5
 
 typedef unsigned char enc_town;
 typedef int enc_word;
