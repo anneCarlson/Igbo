@@ -223,8 +223,13 @@ void write_bigrams_to_file(map<Town, vector<wstring> >& town_vectors, char* outF
 {
   ofstream output (outFile);
   map<Town, vector<wstring> >::iterator i;
-  for(i = town_vectors.begin(); i != town_vectors.end(); i++)
+  i = town_vectors.begin();
+  int loops=0;
+  //for(i = town_vectors.begin(); i != town_vectors.end(); i++)
+  while (loops < 10)
   {
+	i++;
+	loops++;
 	Town thisTown = i->first;
 	//cout << "Coordinates:\t" << thisTown.first << "," << thisTown.second << "\n";
 	vector<wstring> words = i->second;
@@ -452,6 +457,7 @@ void gather_bigrams (map<enc_town, map<wstring, float> >& town_dicts, const char
   bool header = true;
   enc_town curr_town = 0;
   town_bigrams = new map<enc_word, map<enc_word, int> > [town_enc_ct];
+  reverse_bigrams = new map<enc_word, map<enc_word, int> > [town_enc_ct];
   town_firsts = new map<enc_word, int> [town_enc_ct];
   while (lists.good()) {
     if (header) {
@@ -1079,16 +1085,27 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
     map<enc_word, cog_class>::iterator it1;
     vector<enc_town>::iterator it2;
     map<enc_word, cog_class>::iterator it3;
+    wcout << "here1 \n";
     for (it1=cognates[i].begin(); it1 != cognates[i].end(); it1++) {
+      wcout << "here1.5 \n";
       float word_count = town_dict[word_decoding[it1->first]];
+      wcout << "here2 \n";
       if (total_word_counts[it1->first] >= MIN_COUNT && word_count > 1) {
+	wcout << "here3 \n";
 	enc_word best_match = -1;
 	cog_class best_class = it1->second;
 	float best_ratio = 2;
+	wcout << "here3.5 \n";
 	for (it2=neighbors[i].begin(); it2 != neighbors[i].end(); it2++) {
+	  wcout << "here4 \n";
 	  if (i > *it2) {
+	    wcout << "here5 \n";
 	    map<wstring, float> neighbor_dict = town_dicts[*it2];
+	    wcout << "here5.5 \n";
+	    wcout << cognate_classes[cognates[*it2][it1->first]]<< "\n";
+	    wcout << i<< "\n";
 	    if (neighbor_dict.count(word_decoding[it1->first]) == 1 && cognate_classes[cognates[*it2][it1->first]][i] == -1) {
+	      wcout << "here6 \n";
 	      best_match = it1->first;
 	      best_class = cognates[*it2][it1->first];
 	      break;
@@ -1111,6 +1128,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	  }
 	}
 	if (best_match >= 0) {
+	  wcout << "here7 \n";
 	  cog_class old_class = it1->second;
 	  it1->second = best_class;
 	  add_counts (i, it1->first, word_count, it1->second);
@@ -1351,12 +1369,16 @@ int main (int argc, char* argv[]) {
   encoding[L"!"] = enc_ct;
   decoding[enc_ct++] = L"!";
   
-  map<Town, vector<wstring> > town_vectors;
+  /*map<Town, vector<wstring> > town_vectors;
   vectorize_all (town_vectors, argv[1]);
-  write_bigrams_to_file(town_vectors, argv[2]);
-  
-  /*gather_lists (town_dicts, argv[1]);
-  char_distance_calc (argv[2]);
-  find_cognates (town_dicts, argv[4], argv[5], argv[3]);
-  return 0;*/
+  write_bigrams_to_file(town_vectors, argv[2]);*/
+      
+  gather_lists (town_dicts, argv[1]);
+  cout << "here \n";
+  gather_bigrams (town_dicts, argv[2]);
+  cout << "here \n";
+  char_distance_calc (argv[3]);
+  find_cognates (town_dicts, argv[5], argv[6], argv[4]);
+  cout << "here \n";
+  return 0;
 }
