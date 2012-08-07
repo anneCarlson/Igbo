@@ -1074,8 +1074,12 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
       }
     }
   }
+  cout << "pretty please with sugar\n";
   for (int i=0; i < town_enc_ct; i++) {
     map<enc_word, map<enc_word, int> >::iterator it4;
+    cout << "pretty please with sugar2\n";
+    cout << town_bigrams[i] << "\n";
+    cout << "pretty please with sugar3\n";
     for (it4=town_bigrams[i].begin(); it4 != town_bigrams[i].end(); it4++) {
       map<cog_class, int>* first_dict = &class_bigrams[cognates[i][it4->first]];
       map<enc_word, int>::iterator it5;
@@ -1088,6 +1092,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
     }
   }
   // make some guesses
+  cout << "God damn it!\n";
   for (int i=0; i < town_enc_ct; i++) {
     wcout << i << endl;
     map<wstring, float> town_dict = town_dicts[i];
@@ -1103,6 +1108,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	for (it2=neighbors[i].begin(); it2 != neighbors[i].end(); it2++) {
 	  if (i > *it2) {
 	    map<wstring, float> neighbor_dict = town_dicts[*it2];
+	    //cout << cognate_classes[cognates[*it2][it1->first]][i] <<"\n";
 	    if (neighbor_dict.count(word_decoding[it1->first]) == 1 && cognate_classes[cognates[*it2][it1->first]][i] == -1) {
 	      best_match = it1->first;
 	      best_class = cognates[*it2][it1->first];
@@ -1372,7 +1378,9 @@ int main (int argc, char* argv[]) {
       
   gather_lists (town_dicts, argv[1]);
   //gather_bigrams (town_dicts, argv[2]);
+  cout << "please \n";
   char_distance_calc (argv[3]);
+  cout << "pretty please \n";
   find_cognates (town_dicts, argv[5], argv[6], argv[4]);
 
   return 0;
