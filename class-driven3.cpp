@@ -223,8 +223,13 @@ void write_bigrams_to_file(map<Town, vector<wstring> >& town_vectors, char* outF
 {
   ofstream output (outFile);
   map<Town, vector<wstring> >::iterator i;
-  for(i = town_vectors.begin(); i != town_vectors.end(); i++)
+  i = town_vectors.begin();
+  int loops=0;
+  //for(i = town_vectors.begin(); i != town_vectors.end(); i++)
+  while (loops < 10)
   {
+	i++;
+	loops++;
 	Town thisTown = i->first;
 	//cout << "Coordinates:\t" << thisTown.first << "," << thisTown.second << "\n";
 	vector<wstring> words = i->second;
@@ -1098,6 +1103,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	for (it2=neighbors[i].begin(); it2 != neighbors[i].end(); it2++) {
 	  if (i > *it2) {
 	    map<wstring, float> neighbor_dict = town_dicts[*it2];
+	    //cout << cognate_classes[cognates[*it2][it1->first]][i] <<"\n";
 	    if (neighbor_dict.count(word_decoding[it1->first]) == 1 && cognate_classes[cognates[*it2][it1->first]][i] == -1) {
 	      best_match = it1->first;
 	      best_class = cognates[*it2][it1->first];
@@ -1339,7 +1345,58 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
     }
   }
   ofstream outfile2 (out2);
+  /*
+  multimap<int, pair<wstring,wstring> > inverse_town_dict;
+	map<pair<wstring,wstring>, int>::iterator it;
+	for (it=towns_map.begin(); it != towns_map.end(); it++)
+	    inverse_town_dict.insert(pair<int, pair<wstring,wstring> > (it->second, it->first));
+	multimap<int, pair<wstring,wstring> >::reverse_iterator it3;
+	for (it3=inverse_town_dict.rbegin(); it3 != inverse_town_dict.rend(); it3++)
+	    output << it3->first << '\t' << WChar_to_UTF8(it3->second.second.c_str())<< '\t' << WChar_to_UTF8(it3->second.first.c_str()) << endl;
+	output << '\n';
+	*/
+  
+  multimap<int, enc_word*> inverse_cog_class;
   map<cog_class, enc_word*>::iterator it4;
+  for (it4=cognate_classes.begin(); it4 != cognate_classes.end(); it4++) 
+  {
+    enc_word* cog_class = it4->second;
+    int occurances=0;
+    bool first=true;
+    int lastword;
+    bool include=true;
+    for (int i=0; i < town_enc_ct; i++)
+    {
+      if (it4->second[i] >= 0)
+      {
+	if(first)
+	{
+	  first=false;
+	}
+	else
+	{
+	  if(lastword==it4->second[i])
+	    include=false;
+	}
+	lastword=it4->second[i];
+	occurances=occurances+town_dicts[i][word_decoding[it4->second[i]].c_str()];
+      }
+    }
+    if(include)
+      inverse_cog_class.insert(pair<int, enc_word*> (occurances, cog_class));  
+  }
+  
+  multimap<int, enc_word*>::reverse_iterator it5;
+  for (it5=inverse_cog_class.rbegin(); it5 != inverse_cog_class.rend(); it5++) {
+    for (int i=0; i < town_enc_ct; i++) {
+      if (it5->second[i] >= 0)
+	outfile2 << it5->first << "\t" << town_decoding[i].first << "," << town_decoding[i].second << "\t" << it5->second[i] << "\t" << WChar_to_UTF8 (word_decoding[it5->second[i]].c_str()) << endl;
+      //outfile2 << i << "\t" << it4->second[i] << "\t" << WChar_to_UTF8 (word_decoding[it4->second[i]].c_str()) << endl;
+    }
+    outfile2 << endl;
+  }
+  
+  /*map<cog_class, enc_word*>::iterator it4;
   for (it4=cognate_classes.begin(); it4 != cognate_classes.end(); it4++) {
     for (int i=0; i < town_enc_ct; i++) {
       if (it4->second[i] >= 0)
@@ -1360,12 +1417,15 @@ int main (int argc, char* argv[]) {
   encoding[L""] = 0;
   encoding[L"!"] = enc_ct;
   decoding[enc_ct++] = L"!";
+  
   /*map<Town, vector<wstring> > town_vectors;
   vectorize_all (town_vectors, argv[1]);
   write_bigrams_to_file(town_vectors, argv[2]);*/
+      
   gather_lists (town_dicts, argv[1]);
-  gather_bigrams (town_dicts, argv[2]);
+  //gather_bigrams (town_dicts, argv[2]);
   char_distance_calc (argv[3]);
   find_cognates (town_dicts, argv[5], argv[6], argv[4]);
+
   return 0;
 }
