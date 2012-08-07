@@ -1085,26 +1085,27 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
     map<enc_word, cog_class>::iterator it1;
     vector<enc_town>::iterator it2;
     map<enc_word, cog_class>::iterator it3;
-    wcout << "here1 \n";
+    //wcout << "here1 \n";
     for (it1=cognates[i].begin(); it1 != cognates[i].end(); it1++) {
-      wcout << "here1.5 \n";
+     // wcout << "here1.5 \n";
       float word_count = town_dict[word_decoding[it1->first]];
-      wcout << "here2 \n";
+      //wcout << "here2 \n";
       if (total_word_counts[it1->first] >= MIN_COUNT && word_count > 1) {
-	wcout << "here3 \n";
+	//wcout << "here3 \n";
 	enc_word best_match = -1;
 	cog_class best_class = it1->second;
 	float best_ratio = 2;
-	wcout << "here3.5 \n";
+	//wcout << "here3.5 \n";
 	for (it2=neighbors[i].begin(); it2 != neighbors[i].end(); it2++) {
-	  wcout << "here4 \n";
+	  //wcout << "here4 \n";
 	  if (i > *it2) {
 	    wcout << "here5 \n";
 	    map<wstring, float> neighbor_dict = town_dicts[*it2];
 	    wcout << "here5.5 \n";
+	    wcout << cognates[*it2][it1->first] << "\n";
 	    wcout << cognate_classes[cognates[*it2][it1->first]]<< "\n";
 	    wcout << i<< "\n";
-	    if (neighbor_dict.count(word_decoding[it1->first]) == 1 && cognate_classes[cognates[*it2][it1->first]][i] == -1) {
+	    if (neighbor_dict.count(word_decoding[it1->first]) == 1 && *cognate_classes[cognates[*it2][it1->first]] == -1) {
 	      wcout << "here6 \n";
 	      best_match = it1->first;
 	      best_class = cognates[*it2][it1->first];

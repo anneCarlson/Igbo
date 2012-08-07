@@ -1101,9 +1101,11 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	  if (i > *it2) {
 	    wcout << "here5 \n";
 	    map<wstring, float> neighbor_dict = town_dicts[*it2];
-	    wcout << "here5.5 \n";
+	    /*wcout << "here5.5 \n";
+	    wcout << cognates[*it2][it1->first] << "\n";
 	    wcout << cognate_classes[cognates[*it2][it1->first]]<< "\n";
-	    if (neighbor_dict.count(word_decoding[it1->first]) == 1 && cognate_classes[cognates[*it2][it1->first]][i] == -1) {
+	    wcout << i<< "\n";*/
+	    if (neighbor_dict.count(word_decoding[it1->first]) == 1 && *cognate_classes[cognates[*it2][it1->first]] == -1) {
 	      wcout << "here6 \n";
 	      best_match = it1->first;
 	      best_class = cognates[*it2][it1->first];
