@@ -11,7 +11,7 @@ using namespace std;
 
 #define GAMMA 0.0001
 #define DELTA 0.
-#define ITER 10000
+#define ITER 100000
 #define INCR 2500
 #define DIST_POWER 1
 #define MIN_COUNT 5
@@ -529,7 +529,7 @@ void char_distance_calc (const char* charfile) {
       short curr_feature;
       features[curr_enc_char][i] = chars.get()-48;
     }
-    wcout << curr_enc_char << "\t" << features[curr_enc_char][0] << "," << features[curr_enc_char][1] << "," << features[curr_enc_char][2] << "," << features[curr_enc_char][3] << "," << features[curr_enc_char][4] << "," << features[curr_enc_char][5] << "," << features[curr_enc_char][6] << endl;
+    //wcout << curr_enc_char << "\t" << features[curr_enc_char][0] << "," << features[curr_enc_char][1] << "," << features[curr_enc_char][2] << "," << features[curr_enc_char][3] << "," << features[curr_enc_char][4] << "," << features[curr_enc_char][5] << "," << features[curr_enc_char][6] << endl;
     chars.ignore (1);
     if (chars.peek() == -1)
       chars.ignore (1);
@@ -974,7 +974,7 @@ double word_match_prob (enc_town first_town, enc_town second_town, enc_word firs
 	a_to_b += it->second;
 	a_to_anything += it->second;
       }
-      prob_to_return *= pow(/*(1/char_distances[it->first/512][it->first%512])**/(a_to_b + GAMMA)/(a_to_anything + (char_counts[second_town]*GAMMA)), it->second);
+      prob_to_return *= pow((1/char_distances[it->first/512][it->first%512])*(a_to_b + GAMMA)/(a_to_anything + (char_counts[second_town]*GAMMA)), it->second);
 
     }
   }
@@ -1069,7 +1069,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
       }
     }
   }
-  for (int i=0; i < town_enc_ct; i++) {
+  /*for (int i=0; i < town_enc_ct; i++) {
     map<enc_word, map<enc_word, int> >::iterator it4;
     for (it4=town_bigrams[i].begin(); it4 != town_bigrams[i].end(); it4++) {
       map<cog_class, int>* first_dict = &class_bigrams[cognates[i][it4->first]];
@@ -1081,7 +1081,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	(*first_dict)[second_class] += it5->second;
       }
     }
-  }
+    }*/
   // make some guesses
   for (int i=0; i < town_enc_ct; i++) {
     wcout << i << endl;
@@ -1243,7 +1243,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
       // if the above case is true, we need to calculate the probability
       if (!skip) {
 	// start with the language model component
-	/*double old_exp_prob = (class_counts[new_class])/(arf_total);
+	double old_exp_prob = (class_counts[new_class])/(arf_total);
 	double new_exp_prob = (class_counts[new_class] + curr_count)/(arf_total);
 	double old_dist_prob = pow(pow(1-old_exp_prob, arf_totals[curr_town]), DIST_POWER);
 	double new_dist_prob = binomial_prob (curr_count, arf_totals[curr_town], new_exp_prob);
@@ -1263,9 +1263,9 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	      change_prob *= new_dist_prob/old_dist_prob;
 	    }
 	  }
-	  }*/
+	}
 	// bigram
-	change_prob = 1;
+	/*change_prob = 1;
 	map<enc_word, int>::iterator it4;
 	// find the change in bigram probabilities involving our given word (both as the first and second words of the bigram)
 	for (it4=reverse_bigrams[curr_town][curr_word_enc].begin(); it4 != reverse_bigrams[curr_town][curr_word_enc].end(); it4++) {
@@ -1278,7 +1278,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	  cog_class second_class = cognates[curr_town][it4->first];
 	  double old_bigram_prob = (class_bigrams[second_class][new_class] + (class_counts[second_class]/arf_total)*DELTA)/(class_firsts[new_class] + DELTA);
 	  double new_bigram_prob = (class_bigrams[second_class][new_class] + it4->second + (class_counts[second_class]/arf_total)*DELTA)/(class_firsts[new_class] + town_firsts[curr_town][curr_word_enc] + DELTA);
-	}
+	  }*/
 	// calculate the probability of the given word being a cognate of each of its potential neighbors
 	for (it=neighbors[curr_town].begin(); it != neighbors[curr_town].end(); it++) {
 	  enc_word new_neighbor_word = cognate_classes[new_class][*it];
@@ -1348,7 +1348,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
     }
     outfile2 << endl;
   }
-  /*ofstream outfile3 ("gibbs-results/chars.txt");
+  /*ofstream outfile3 ("nonsense/chars.txt");
   for (int i=0; i < enc_ct; i++)
   outfile3 << i << "\t" << WChar_to_UTF8 (decoding[i].c_str()) << endl;*/
 }
@@ -1365,7 +1365,7 @@ int main (int argc, char* argv[]) {
   write_bigrams_to_file(town_vectors, argv[2]);*/
   gather_lists (town_dicts, argv[1]);
   gather_bigrams (town_dicts, argv[2]);
-  //char_distance_calc (argv[3]);
+  char_distance_calc (argv[3]);
   find_cognates (town_dicts, argv[5], argv[6], argv[4]);
   return 0;
 }
