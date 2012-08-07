@@ -1,0 +1,117 @@
+Comparison: a and a (0)
+
+0 changes:
+			(5)
+	a, a
+	canal, canal
+	man, man
+	panama, panama
+	plan, plan
+
+1 changes:
+
+2 changes:
+		[pm][+l]	(1)
+[pm][+l]	plan, man
+		[mp][-l]	(1)
+[mp][-l]	man, plan
+		[-p][ml]	(1)
+[-p][ml]	man, plan
+		[-m][-n]	(1)
+[-m][-n]	a, man
+		[+p][lm]	(1)
+[+p][lm]	plan, man
+		[+m][+n]	(1)
+[+m][+n]	man, a
+
+3 changes:
+		[pc][ml][+a]	(1)
+[pc][ml][+a]	panama, canal
+		[pc][+m][al]	(1)
+[pc][+m][al]	panama, canal
+		[mc][-a][-l]	(1)
+[mc][-a][-l]	man, canal
+		[cp][lm][-a]	(1)
+[cp][lm][-a]	canal, panama
+		[cp][-m][la]	(1)
+[cp][-m][la]	canal, panama
+		[cm][+a][+l]	(1)
+[cm][+a][+l]	canal, man
+		[-p][-l][-n]	(1)
+[-p][-l][-n]	a, plan
+		[+p][+l][+n]	(1)
+[+p][+l][+n]	plan, a
+
+4 changes:
+		[pm][+a][+m][+a]	(1)
+[pm][+a][+m][+a]	panama, man
+		[pc][la][-n][nl]	(1)
+[pc][la][-n][nl]	plan, canal
+		[pc][-a][ln][nl]	(1)
+[pc][-a][ln][nl]	plan, canal
+		[pc][+l][-a][-l]	(1)
+[pc][+l][-a][-l]	plan, canal
+		[mp][-a][-m][-a]	(1)
+[mp][-a][-m][-a]	man, panama
+		[la][-n][nm][-a]	(1)
+[la][-n][nm][-a]	plan, panama
+		[la][-n][-m][na]	(1)
+[la][-n][-m][na]	plan, panama
+		[cp][al][+n][ln]	(1)
+[cp][al][+n][ln]	canal, plan
+		[cp][-l][+a][+l]	(1)
+[cp][-l][+a][+l]	canal, plan
+		[cp][+a][nl][ln]	(1)
+[cp][+a][nl][ln]	canal, plan
+		[al][+n][mn][+a]	(1)
+[al][+n][mn][+a]	panama, plan
+		[al][+n][+m][an]	(1)
+[al][+n][+m][an]	panama, plan
+		[-p][cl][+a][+l]	(1)
+[-p][cl][+a][+l]	canal, plan
+		[-l][+a][+m][+a]	(1)
+[-l][+a][+m][+a]	panama, plan
+		[-c][pa][ln][nl]	(1)
+[-c][pa][ln][nl]	plan, canal
+		[-c][-n][-a][-l]	(1)
+[-c][-n][-a][-l]	a, canal
+		[-c][-a][-n][-l]	(1)
+[-c][-a][-n][-l]	a, canal
+		[-a][ln][nm][-a]	(1)
+[-a][ln][nm][-a]	plan, panama
+		[-a][ln][-m][na]	(1)
+[-a][ln][-m][na]	plan, panama
+		[+p][lc][-a][-l]	(1)
+[+p][lc][-a][-l]	plan, canal
+		[+l][-a][-m][-a]	(1)
+[+l][-a][-m][-a]	plan, panama
+		[+c][ap][nl][ln]	(1)
+[+c][ap][nl][ln]	canal, plan
+		[+c][+n][+a][+l]	(1)
+[+c][+n][+a][+l]	canal, a
+		[+c][+a][+n][+l]	(1)
+[+c][+a][+n][+l]	canal, a
+		[+a][nl][mn][+a]	(1)
+[+a][nl][mn][+a]	panama, plan
+		[+a][nl][+m][an]	(1)
+[+a][nl][+m][an]	panama, plan
+
+5 changes:
+		[-p][-n][-a][-m][-a]	(1)
+[-p][-n][-a][-m][-a]	a, panama
+		[-p][-a][-n][-m][-a]	(1)
+[-p][-a][-n][-m][-a]	a, panama
+		[-p][-a][-n][-a][-m]	(1)
+[-p][-a][-n][-a][-m]	a, panama
+		[+p][+n][+a][+m][+a]	(1)
+[+p][+n][+a][+m][+a]	panama, a
+		[+p][+a][+n][+m][+a]	(1)
+[+p][+a][+n][+m][+a]	panama, a
+		[+p][+a][+n][+a][+m]	(1)
+[+p][+a][+n][+a][+m]	panama, a
+
+6 changes:
+
+7 changes:
+
+8 changes:

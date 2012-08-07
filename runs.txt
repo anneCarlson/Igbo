@@ -1,0 +1,331 @@
+50	00:01:25	ègwu edè wèe na-azụ̀ ụmụ̀ arọ̀ 
+3952	xx:xx:xx		/ aha ɔ ne etye ma ɔβʊrʊ na /
+4172	xx:xx:xx		/ na ʊlwɔ gbɔrɔ ɔtɔ na aha /
+4486	xx:xx:xx		/ ɲaa four deedi maka ah abanɪ ɪnɔ wʊ ɲa /
+5050	xx:xx:xx		/ aʧɔzɪ ka agbakpɪ je ka oʤe na adɪzɪnaa ama /
+6224	xx:xx:xx		/ okwu asɪ bɪazi a na aka ekpe eŋwee /
+6588	xx:xx:xx		/ kwa wʊ ihworo ha ʊnereeh abɪrɪka ka /
+7084	xx:xx:xx		/ ŋwere sɔsɔɔ ʊgʊ tee ja tikwe /
+7166	xx:xx:xx		/ ihe ɪ siri na ɔkʊ ja gbotu ɔfʊma /
+7442	xx:xx:xx		/ kwa ja na nkpɔ ja wʊ ndɪ /
+7900	xx:xx:xx		/ ajɪ ga aʧɔ iʤʊ gɪ eʤi m aka n ɪ ga /
+8022	xx:xx:xx		/ ike ʧikʊlɔta mkpʊrʊ okwu ole /
+8100	00:10:15	ọlụ̄ ānyị̄ m̀kpè ike dị̀ ànyị mà 
+53862	xx:xx:xx		/ tʊ taʊsanʊ bʊlʊ faiv hundred /
+54206	xx:xx:xx		/ dei so na o ŋweazɪ ikwu na /
+54646	xx:xx:xx		nya mànyi yē ònwèlù iphhe o mèlù 
+54907	xx:xx:xx		/ egbe bulu ɔkʊkʊ nɔ ɔkʊkʊ tara akɪka /
+55011	xx:xx:xx		/ mezili akɪka aŋwa ewee sɪ na ɔkʊkɔ lili akɪka /
+55067	xx:xx:xx		/ na mkpɔ sʊwalʊ ʊkwa ʊkwa dagbuonu /
+55185	xx:xx:xx		/ zɪ ozi oɲe ezili ɔbʊlʊ nkɪta ka ezili ɲa /
+55363	xx:xx:xx		/ ly without is top nɔkata iʤe mee nkaa /
+55451	xx:xx:xx		/ ootiʤerere o /
+55515	xx:xx:xx			/ otiʤerere mana ʊkwʊ ja dɪka ʊkwʊ ŋwamʊ /
+55735	xx:xx:xx		/ ni ime ɔфɪa bee agʊʊ gʊɔ ɲa like this eŋwee /
+56155	xx:xx:xx		/ atʊgom ɪtɔ ni iфea aɲɪ ni iфea aɲɪ /
+56351	xx:xx:xx		/               ɔ ʧɔlʊ nke ga adɪ ja                 nke /
+56479	xx:xx:xx		/ ajɔ ɔnʊ ɔzɔ nɔʧaa na agɪga aʤa ɔnʊ ʊzɔ /
+56613	xx:xx:xx		anà àgwa, ǹkakwū nà àgwị yā ǹkakwū 
+56672	xx:xx:xx		/ wee nʊβa ɔga wee ʤee kpɔɔ pɔliisi /
+56848	xx:xx:xx			/ e ee ehe   ee egwu ʊmʊoʤi /
+57092	Town:	Ojoto
+57398	00:01:48			/ ga ndʊdʊga u mmadʊ ɪnɔ no ɔwɪ ɪtse /
+61102	xx:xx:xx		/ kwa wʊ ihworo ha ʊnereeh abɪrɪka ka /
+61598	xx:xx:xx		/ ŋwere sɔsɔɔ ʊgʊ tee ja tikwe /
+61680	xx:xx:xx		/ ihe ɪ siri na ɔkʊ ja gbotu ɔfʊma /
+61956	xx:xx:xx		/ kwa ja na nkpɔ ja wʊ ndɪ /
+62414	xx:xx:xx		/ ajɪ ga aʧɔ iʤʊ gɪ eʤi m aka n ɪ ga /
+62536	xx:xx:xx		/ ike ʧikʊlɔta mkpʊrʊ okwu ole /
+62682	xx:xx:xx		/ ede ɪ ga ha e ŋwere otu hana /
+62856	xx:xx:xx		/ ja bee ʤiakwuna ɣuo ʊgbaka /
+63128	xx:xx:xx		/ ugbua aɣɔtaɣɪ na ana eʃʊ ɔdʊ /
+63234	xx:xx:xx		/ ha bɪa buru ja ɣe ɔ naɣɪ /
+63380	xx:xx:xx		/ mgbe ɪ na akpaɣa ja na agba ɪ ga /
+63538	xx:xx:xx		/ eme ja wʊ egwuʃi ihe a na /
+63826	xx:xx:xx		/ eruo na ʊkʊtʊ ugbua ekpeʧahala /
+64250	xx:xx:xx		/ ga tuhana igune were kpuo aʤa /
+64334	xx:xx:xx		/ eʤi ebu ʊlɔ ɔma ahwʊ ɔbʊɣɪ nkea /
+64616	xx:xx:xx		/ pʊrʊ iʧe eʃi eʧekwaba ihe ndɪ a /
+65294	xx:xx:xx		/ akpʊ ʊkwʊ ele gɪ bɪa ŋwee ʊkwʊ /
+65514	xx:xx:xx		/ ahwʊ ka o ʤi  aga iʤe /
+65586	xx:xx:xx		/ ewu ŋwere ɔrʊ asatɔ e /
+65832	xx:xx:xx		/ nri a na egburu ewu nri /
+65942	xx:xx:xx		/ ihe a na akpɔ ʊkwʊ ahwʊ /
+66400	xx:xx:xx		/ ajɪ na akpɔ ja igbo mm /
+66474	xx:xx:xx		/ dɪ mma ɔrɪrɪ and ɣoo /
+68410	xx:xx:xx		/ eleru ja aɲa elesa akʊlʊ ulwo /
+68769	xx:xx:xx		/ na abalɪ na abalɪ na abalɪ mmiri /
+69145	xx:xx:xx		/ nɔɔə nɔ ɔŋwa itoolu kɔɔ otu /
+69223	xx:xx:xx		/ wa ʤi ha bɪa khewe ja /
+69321	xx:xx:xx		/ /
+69493	xx:xx:xx		/ /
+69729	xx:xx:xx		/ ʧi ja mmiri baʧaa ebe niile /
+70185	xx:xx:xx		/ aɲa atɔ nke mgbede dɪka otu /
+70371	xx:xx:xx		/ igbo ajɪ na aŋʊ ja wʊrʊna iʃiri /
+70838	xx:xx:xx		/ oŋwee oɲe na abʊdʊ nnukwu mmadʊ /
+71082	xx:xx:xx		/ jɪ nke atɔ na nke anɔ maka /
+71537	xx:xx:xx		ehee 
+71650	xx:xx:xx		/ wʊ ihe ɔkpɔkɔlɔ ebelɪ ja ebe /
+72422	xx:xx:xx		/ ajɪ ŋwere ihe na akpɔ ukwhu /
+72934	xx:xx:xx		/ mepʊta ja akwʊ a ga eʤi abʊbʊ /
+74914	xx:xx:xx		/ ndɪ ŋwee iri ihu niile a bʊ /
+75812	xx:xx:xx		/ ɔrʊ were na arʊ ja ɔbʊɔzɪɪ /
+77112	xx:xx:xx		abịrịba si dị a bata na-ezinụlọ nda ife unu 
+87080	xx:xx:xx		/ ka m ʤi  /
+88187	xx:xx:xx	/  /
+88356	xx:xx:xx	/   /
+97862	xx:xx:xx		/ ɔβʊlʊ ohwu nnukwute uno gaa na ime  /
+98931	xx:xx:xx			/ ajolugbe ŋwaɲɪ omenana βɪ iβe /
+99239	xx:xx:xx			/ nkɪtɪ aɲɪ akara nka nɔ ɔβʊ /
+99435	xx:xx:xx		/ aɲɪ nɔɔ фʊ egwuu ka aɲɪ ʤi wee ʤe /
+99547	xx:xx:xx			/ okulu ŋwa ku ɔ palɪ tɔɔʧɪ dalɪ /
+99767	xx:xx:xx			/ oo ko oʤi me /
+100053	xx:xx:xx			/ omenaana nri ɲa ka aɲɪ ne eme /
+100141	59:01:25	papa anyị anyị chọ kị ịkọwara anyị otu esi 
+118535	xx:xx:19	/  /
+156612	xx:xx:xx	/   /
+157209	00:03:27				/ rɪʧee aʤee parakwa ɲa bʊ ɪgbagwu tɪɲe/
+164599	xx:xx:xx		/ ne elu je ajɪ na agarazi /
+164943	xx:xx:xx		/ ɪbatazie nʊ ʊlwɔ ja dɪnʊ mma /
+165902	00:00:47			/ anɔ m naa retirement /
+179459	01:48:05				/ ee mbɔsɪ aɲɪ ʤeli be enukeruɔra /
+181478	00:28:03			/ owulu gboo mana ɔβʊ ɔna ka eʤi malʊ ɔzɔ /
+188255	01:47:50			/ ɔʤi naasatɔ ʤi naasatɔ elee ka βa si /	
+188941	00:02:04			/ amasɪ m maa igwaduwokee m iβe /
+189078	00:01:56			/ nɔ ɔβʊ ɔʤi βʊ isi mbido asʊsʊ /
+189144	00:03:44			/ o jire ɪkara ɲaa na aɲi ne ekwu okwu /
+193596	00:03:15			/ e e oŋwere iβe gaa ʧukwu ni iru /
+197629	00:02:17			/ oɲe sɪlika ajɪ sɪ aga adʊrɪ ja mma /
+197835	00:07:13			/ e e m wee na alʊ ɲaβʊ ɔlʊ ugbo /
+200770	00:17:55			/ na ɪna akɔ ɔlʊ aɲɪ ana akpɔlio /
+210821	xx:xx:xx			/ akpara aŋara ta nda anʊnʊ /
+210895	xx:xx:xx		/ asɪ nɔ ɔβɪ ja ka nni je na nnɪ ja /
+211043	xx:xx:xx		/ ŋwuni je ŋwaaɲɪa ɔmanuokwe oɲe ɔβʊ /
+211289	xx:xx:xx		/ ʃɪ nɔ ɔβɪ ja ka ŋwaaɲa ʤi wee kpɔkata /
+211377	xx:xx:xx		/ na ama ŋwa na ama aʃɪ ubeŋwa /
+211601	xx:xx:xx		/ nɪ ja nɔ nka ɲaaɔ na aɸʊ oɲeŋwe nɪ ja /
+211725	xx:xx:xx			/ afɔ kpʊlʊʤa kpʊlʊʤa mmalake /
+211918	xx:xx:xx		/ nke ʤee iʧe ɔfʊɔ imeree ɔkpʊ abɪaɸa /
+212509	xx:xx:xx		/ welu ɔʤɪ takwaanʊ ogbuu ŋwa kɪ ibi eʤe ngene /
+212719	xx:xx:xx		/ ɔɔ ɸa aŋwa na eti ɲaβʊ mmɔŋwʊ /
+212961	xx:xx:xx		/ na aɲa nna ɸa m wee soluβe wee /
+213211	xx:xx:xx		/ oŋwere iɸe ɔβʊna ikwulu nɔ ɔnʊ ɔʤaa /
+213341	xx:xx:xx		/ wee ʤe kwadote egbukpɔɔ ɸa mmadʊ /
+213405	xx:xx:xx		/ vu aʤɔ nʃɪ wee bata ɔɔ oɲe ɔʤa /
+213525	xx:xx:xx		/ na ana egbu ɔʤa oŋwee obele onu /
+213581	xx:xx:xx		/ iɸe ije anʊ ne enu nkwʊ βʊ vʊlulu /
+213661	xx:xx:xx		/ two hundred naira ma fifty naira ma /
+213777	xx:xx:xx		/ iʤele gɪ rɔrite egwu oɲe ɔkwɔ ɔʤa /
+214015	xx:xx:xx		/ ja fʊβa soo ɔɔ iɸee iɸe /
+214263	xx:xx:xx		/ azɪ aɲɪ na aʃɪ na ɸa ʤewaʧagwolu /
+214395	xx:xx:xx		/ imezie mmɔŋwʊ afʊta ɪna aʃɪ kelu /
+214491	xx:xx:xx		/ na amʊ amʊ na adʊ mma iwetugwodu /
+214653	xx:xx:xx		/ ma nkee βʊ ɪkwa ogugu ŋwaaɲa /
+214711	xx:xx:xx		/ mʊ aɸʊ na akwa je eʤe mazɪa ɲa /
+214847	xx:xx:xx		/ eriʤeeti m wee ʤe welu ɲaβʊ ɔʤa /
+215027	xx:xx:xx		nà obele nnwị̄ yā ne-esū yē n' àzụ 
+215859	xx:xx:xx		/ ka ɸa sokweenu ɣʊ, ɔsɪɸa ʧaa, ɔmanaa /
+216003	xx:xx:xx		/ nuuɸu ɔdɪzɪkwa kɔ ɔdʊ ma ɔ na akpɔʧiɣa /
+216211	xx:xx:xx		/ mmʊɔ ɲa ʃi dotaɣʊ, nɪ ja, aɸʊkaɣu na aɲa /
+216590	00:02:12			/ aʧɪ iɸe oɲe ma marɪ ja /
+216698	00:05:05			/ aŋʊwu udɪa /
+216920	00:10:21			/ i ʤi kɪ i ʤi wee bʊrʊ isә isi /
+217034	00:13:06			/ nɔdɪ na m ni isi ebe ɪ nɔ ɔzɔ /
+218028	00:35:54			/ ʊmʊɔkhʊ ʊmʊoku ehee a na /
+218162	00:38:14			/ ɔbʊrɔnnɔɔ alʊsɪ nɔɔ iɸe eʤi /
+218232	00:40:00			/ ɔɸɔ ka idide ʤi awa ana /
+218374	00:43:02			/ ekwu okwu nki je bʊ omume /
+218584	00:47:55			/ dɪ nɪ ja tsɪ nɪ ja na eme iɸe ɪ na /
+218650	00:49:18			/ etuazɪ tʊmadʊ oŋwee oɲe ʤiri je /
+218832	00:50:23			/ dɪ ne etiti etiti ɸa mbɔsɪ aa /
+219010	00:57:17			/ nɔ ɔ dɪgafʊ mkpa ɸa abaɲe nɪ ja /
+219252	01:02:33			/ oŋwee nke a na akpɔɔ aaә nsɔ /
+220176	01:26:56			/ mmaɲa ɔ na ewe ɔʤɪ ɔ na ewe /
+220792	01:41:50			/ dɪ na ana ajɪ aɽaa amɪzɪ wee /
+220940	01:45:13			/ bʊ ee ɔʤɪ ee ŋwaajɪ mana oŋwerʊ /
+221062	01:48:25			/ eri je mgbe gboo aa ma kɪtaa /
+221178	01:50:42			/ ʊmʊ ajɪ je eʤe mba ɔzɔ obodo /
+221291	00:01:50			/ bʊ eʧiʧi ndɪ ka ibe ɸa ndɪɪ /
+223125	00:41:54			/ abɪa aʤʊɔ ɔzɔ i ʧiri aʧɔba ebe /
+223495	00:51:04			/ pʊa ɪ nɔʧie ɲa kpatara o ʤi /
+223673	00:54:41			/ ɔgwʊna ee ikike ɸa bʊ mgbe /
+223797	00:57:27			/ nze nɔ abaa ɔgwʊna /
+223871	00:58:53			/ ɲa bʊ ogene nɔ ɔ na aʧɔ /
+223969	01:01:04			/ asapʊ ntʊ na aɣʊɣɔ aa ma iɸe /
+224175	01:05:26			/ ɔɸɔ i ʤi ɔɸɔ oɲe ɔɸɔ ruru /
+224277	01:08:02			/ bʊ obele nŋwa ndɪ afʊ ja aŋʊrʊ /
+224439	01:11:44			/ nɔ anɪ ɪ ja aɸʊnʊ ndɪɪ ndɪɪ /
+224557	01:14:10			/ eze ajɪ ʤeru iʤe no okpuru bi je /
+224680	00:02:57			/ je be dibɪa ʤe gbaa afa a ʤʊaa /
+225886	00:34:10			/ ʊʊә ndɪɪ ʊka abɪaraana sɪ kaa /
+226052	00:37:26			/ ɪza isi na ʊkwʊ oɲe afʊ ɔzago /
+226320	00:43:10			/ gwʊ nke etua ahaaa eŋwelʊʊ /
+226448	00:45:56			/ ebe aa metʊtarɪ ja etua oɸebe /
+226534	00:47:43			/ nke ɔzɔ bʊzɪ dɪka ajɪ kwuru /
+226636	00:50:11			/ na asɔ na ndɪ ɔzɔ nee eri je /
+227026	01:00:26			/ iβe a bʊ iɸe aʤɔ ɔɸɪa aɸʊ /
+227112	01:02:39			/ erikwa oke ɲaa ɔ na eri anʊ /
+227244	01:05:48			/ nkea ɸa wee ɲaa isi ewee sɪ /
+230187	00:01:04			/ mbʊ nɪ i nee aɲa ɪ ɸʊ na ife /
+230787	00:13:48			/ ʤi ɔ na asʊziri ja ɔ sʊɔ sʊɔ /
+230907	00:16:10			/ ne eʤira akwa ee ɲaa fa bido /
+231003	00:18:11			/ ɸa ka ɸa kwaa mmm /
+231071	00:19:34			/ a na egbu ja na mkpɔrɔɔɸiɸɪa /
+231145	00:21:21			/ oŋwee ndɪ ne eme ka ajɪ ɣɔta /
+231945	00:35:52			/ aba uru site no omume site na /
+232013	00:38:13			/ udummiri na abɪa mgbe ɸa na /
+232197	00:41:34			/ ee mgbe emeene ɔ ja abʊ /
+233577	xx:xx:xx		/ na anʊ ja anʊ malʊkwa mɔ ɔkwɔ oɲe ɪ kpɔlʊ /
+233723	xx:xx:xx		/ ive ɔbuna ɔ na eŋwekwɔ ɔnʊ adɪ arʊa /
+234291	xx:xx:xx		/ ezigbo ife ŋwaaɲɪ melie wee nʊkwasɪ ja /
+234867	00:01:27			/ abʊ  mʊ oɲe awɔ ora ifite a /
+238993	xx:xx:xx		/ ɔr̃ʊ wʊ ala ndʊ kee ala /
+239365	xx:xx:xx		/ nkee ugbua akpɔga ʊmʊorie /
+239453	xx:xx:xx		/ rʊtʊkwa nga ahʊ ugbua ni ihi /
+239603	xx:xx:xx		/ etu etu oburu ibu nŋwa m amanuhu m /
+240248	Coordinates:	5.5834,7.05
+240608	xx:xx:xx		/ wʊ omenaala mbieri /
+240806	xx:xx:xx		/ na agaranʊ ja ni ihu /
+241138	xx:xx:xx		/ ka alʊlʊ ŋwaajɪ ɔ rɪka otua awɔ /
+241544	xx:xx:xx		/ mgbo ɔwʊla a ga eri ʤi ɔhwʊrʊ /
+242298	xx:xx:xx		/ ihe rʊ otuu mee ihe rʊ otuu /
+242664	xx:xx:xx		/ ehu memere ha abɪa ʧakaʃɪba /
+242808	xx:xx:xx		/ wʊrʊkwanʊ mmadʊ hapʊkwanʊ /
+243034	xx:xx:xx		/ ja abʊɔ gɪ ahʊ ntɪ ja ʊfɔdʊ /
+243502	xx:xx:xx		/ akpɔrɔ /
+244017	xx:xx:xx		/ ebe ahʊ ja na nne ja hapʊrʊ /
+244311	xx:xx:xx		/ ŋwatakɪrɪ a hafee na aka ŋwuɲee /
+244866	xx:xx:xx		/ nke ɲere ja ala ahʊ meere /
+245058	xx:xx:xx		/ mmʊɔ ebe ahʊ ŋwaaɲɪ mmʊɔ /
+245863	xx:xx:xx		/ aʊkɔ ndɪa na akʊziri aɲɪ ihe /
+246189	xx:xx:xx			/ na ŋwanne gɪ na akpɔ /
+246552	xx:xx:xx		/ ndɪ ne eɲe ja aka ma /
+248213	xx:xx:xx		/ na atʊ ogu oguu wʊ ekpere oo /
+253025	xx:xx:xx		/ afɔ di ja makana ɔtʊtʊ mgbe /
+255378	xx:xx:xx	ɔkàkà , gʊβʊ àmà àmà àmàʃɪ 
+263011	xx:xx:xx	/ ɲaa climate / 
+263249	xx:xx:xx	/ ɔlʊ bɔʃɪ                oɲe e ɔʃɪ oɲe / 
+263353	xx:xx:xx	/ zʊɔ nnwa nɔɔ iфe eʤi ajɔ ka eɲe фa / 
+263479	xx:xx:xx	/ ɔβʊɣʊ na elulu ʊwa ɣa mbɔʃɪ m na / 
+263663	xx:xx:xx	n'emeli ye m̀gbà arọ̀, eziokwū, Aka m̄kpị̀sị̄
+265578	xx:xx:xx	/ wee na-alʊ ʊnɔ ana -akpɔ ja aʤa ʊpa / 
+266846	00:02:04			/ mbʊ ana eʤi adɔ ana aka na ntɪ emezɪnu / 
+275579	00:01:46			/ wèe na àna ŋŋwa a mʊ̀rʊ̀ ɔfʊʊ̄ /
+276201	00:02:28	oō omenààna āyị̄
+276360	00:08:30			/ Ive dɪzɪ ka faɪfʊ ɔkʊlɔɔkʊ / 
+276574	00:15:23			/ na aɽʊm ʤi nʊhʊ mβʊ igotsi / 
+276714	00:19:34			/ ma ɔɔ nke a na egbu eɣu / 
+277085	00:28:52	nà ị bịakwa n'̀òmenana 
+277384	00:36:49			/ Ihe ɪdʊnaɣʊ eme na o o βʊ / 
+277464	00:38:41			/ otseaka akaraolu ɲaa nɔɔ ndʊ / 
+277570	00:41:07			/ aβʊɽɔ ŋwanne ha kawʊkwɔ / 
+277624	00:42:50			/ aɽɔ ɔ βʊ ihe a obodo na eme / 
+277727	00:46:02			/ /
+277869	00:49:30			/ eʧe na ɪ ja eɲe ha ɔʤi na nkɪtɪ / 
+278013	00:53:56			/ ɪ ɣɔtago / 
+278301	01:02:52			/ agwu ɪ ɲe ja ɔʤi / 
+278505	01:09:22			/ bukɔta ɔnʊ / 
+278917	01:22:05			/ ekpuɣee aŋwʊ ɽaa aŋwʊ / 
+279077	01:26:06			/ ɔ βʊdzɪ ɪ na ekwudzi edziokwu / 
+279238	01:29:28			/ ogwugwu a abaʧa wee kpue ha / 
+279374	01:34:31	ụ̀mụ̀ọ̀korobịā achọ̄ kwu udzị 
+279467	01:37:03			/ a na adzʊ ɪ kwɔɔ ahwɔ abaʧa / 
+280094	xx:xx:43			/ βà iβe  ̀e . ɔgʊ àrɔ̀ nàtɔ ni iri nɪ ɪtɔ
+285377	00:06:24					/ oɲe na esoti je bʊ ʊʊ oɲedɪka /
+285593	00:10:04					/ sɔɔɔnɲe nne ʤikɔbe mʊ nɪ ja bʊ ŋwanneŋwoka /
+285851	00:14:59					/ a naagbajiʧe va na mbɔagbajɪɪ / 
+285951	00:17:09					/ sɪaaakwalɪa ka m malɪ ʊmʊ ŋwaaja na eli / 
+286125	00:20:37					/ na ikem ka mʊ nʊlʊ dɪ oge mgbe izizi / 
+286261	00:22:58					/ a sɪ gɪ kwuee , ke ive ɪŋwel ikwu /
+286619	00:30:37					/ ee , ɔŋwedɪlɪ ŋwaajaa dɪ imenɪɪ gbakatazɪɪ / 
+286729	00:33:16					kaa  na eku jaarɔaa  , ee m – m 
+286857	00:36:20					/ ekɔrɔ uʊ ɔgʊ naaɲa , n' ɔ bʊ n unu nɪɪ / 
+286977	00:39:05					/ ava bʊ dɪ vunɪɪawʊsa ʤideʧaa / 
+287179	00:02:18					/ sɪ kaalɪ dɪ unu , ka unu bɪaa ka unu kpaʧatalɪaɲɪ / 
+287281	00:04:48					/ sɪɪkapata na ego mbɔsɪ ʊkaa , mgbe na ekwu ivee /
+287981	00:23:16				/ nɔdʊ na ʊnɔ , oɲe pʊt ɔ sɪ naa , naasɪ , /
+288131	00:27:46				/ ʊmarɔ unu mr ive unu ɲ eme unuana /
+288221	00:30:16				/ eʤe kɪt , kedʊ ovu , ɔdɪ gɪ ka ɔ ja makɪlɪɪ /
+288511	00:38:24				/ ɪ wete wee sʊwɪ , ɲa bụ nli ʤi / 
+290311	01:27:22				/ ɔŋwekwalɪakwʊkwɔ ŋwa mʊ vaa na ekeasɪ / 
+290373	01:28:31				/ haa unu jaa , we , wellu oo , teluuaka unu me / 
+290732	00:02:02				/ ʊmaarɔ , kee ive meezɪnʊ , mamʊ edzerɔɔ / 
+290980	00:07:47				/ ndɪ na ebuteakaazɪ na ebute ,aɲɪ bulu /
+291224	00:13:51				/ na elikwu rice , ee ozikpaka , ozikpaka /
+291326	00:16:09				/ ʊtʊʊa naakɪaa , ɔŋwelʊ ʊtʊʊ ɲa gaakɪa / 
+291464	00:19:05				/ anɔdʊ ɪbɪalaabɪa , ɪtʊɔkwa ʊtʊ , maka /
+292086	00:33:06				/ aaabɪa n' ibeaɲɪ ɔ mɪtarɔzɪɪ mkpʊlʊ mgbeavʊ /
+292210	00:36:46				/ naa ma gɪa na – eme ivee , ive ekwulu ʊnɔ ʊka /
+292844	00:52:41				/ ɔ na egbʊrɔ dzi, ana-ama ve amave kɔɔ /
+293515	00:03:43				/ kwanɪ ive avʊ ɔsɔ sɪkwanʊ nsɔ avʊ a n asɔ /
+293677	00:08:11				/ melɪ ɔ jaa m-ive aɲɪ n' akpɔ imeevio bʊ /
+293745	00:10:22				/ asɪ adjaana ukwu nando, aʤaana idimɔɔgbɔ ee ɪ /
+295067	00:02:07				/ bɪa, ɔ ja etolie ɔkɔlɔ bɪa isia aga na ee aɲɪ /
+295123	Coordinates:	6.157,7.0311
+295513	xx:xx:xx		/ 		bataa ɔkʊzʊ bataa / 
+296094	xx:xx:xx		/ eɲe nnɪ ja nni 			/ 
+298381	01:55:57	a dị̀ wòlu ẹ̄kị̄dị̀ bie yē
+302413	xx:xx:xx	/ eɲetʊrʊ nku /
+302473	xx:xx:xx	/ ali ŋwuɲe mbe /
+303358	xx:xx:xx	/ kparanʊma /
+303628	xx:xx:xx		/ i sɪ m bɪa lʊʘa ŋwaaɲɪ ja / 
+303724	xx:xx:xx		/ ʤʊɔ ja aʤʊʤʊ ʊnʊ ʃɪana ɔwʊ / 
+303798	xx:xx:xx	/ ʃɪkwala gɪ bɪaa gɪ a ja hʊ / 
+303896	xx:xx:xx		/ ŋwaajɪ kpɔrɔkwa nde ŋwoko / 
+304008	xx:xx:xx		/ eso ja /
+304244	xx:xx:xx		/ ekele dɪrɪ ʧineeke ekele / 
+304336	xx:xx:xx		/ apara udu mmijɪ ŋwo pɪɪga / 
+304436	xx:xx:xx		/ aga m iŋwe ikikere na ihina / 
+304766	xx:xx:xx		/ iʃi nŋwa ja ja aɲʊa mm / 
+304984	xx:xx:xx		/ ɔmʊmʊ ʃɪ m mmarama / 
+305192	xx:xx:xx		/ akwajɪga okʊ ja nɔrɔ nga / 
+305322	xx:xx:xx		/ abɔrɔ m hʊbarar o o ɪbɔɔla / 
+305428	xx:xx:xx		/ ewere ɔʤɪ bɪa hʊ bɪadʊ ha / 
+305654	xx:xx:xx		/ aɲɪ ne eʤi agba / 
+306052	xx:xx:xx		/ ha pʊta ʤee ahɪa ʤe zʊrʊ ihe / 
+306891	xx:xx:xx		/ ogonogo ɔkpa ɲa akɔna aɲi iɸe aɲɪ je-eri /
+307123	xx:xx:xx		/ ɔdugɔ mma andɪ emeʧeʧe ɲai iɸe /
+307239	xx:xx:xx		/ ɔna aʤʊ jɪ oɲe agʊʊ na agʊ obi ɔ na /
+307335	xx:xx:xx		/ gɔʧaa ɔʤɪ		ma ɔβʊlʊ oɲe nkiti /
+307419	xx:xx:xx		/ ŋwaaɲɪ eʤe e-e ʊhwɔdʊ ɔ na-eʤ,e uhwɔdʊ /
+307699	xx:xx:xx		/ na ɔkʊ ovulu mmilɪa ʧʊpɪ ja o ʤee ebe ɔzɔ / 
+307763	xx:xx:xx		/ mmili luo ana nɪ ja /
+307895	xx:xx:xx		/ kwaβa ɔkʊ kwaβa ɔkʊ oɸekɔɔ mmili /
+307979	xx:xx:xx		/ oɲe ɔmara oŋwere oɲe ɔma ɔŋwere /
+308177	xx:xx:xx		nni ezē sìrì		samala
+308575	xx:xx:xx		/ kɔmplitie owee gaβakwa ʤegide o o /
+308724	xx:xx:xx		/ meʧelu je na isi mana nti ma nke /
+308938	xx:xx:xx		/ nɪ ɪtɔ olu na nkɪ ɪnɔ mbe wee ʧɪβa /
+309511	xx:xx:xx		/ aka na mmiri tawum ʃɪ ʊmʊazʊ gbanʊ /
+309689	xx:xx:xx		/ batawʊ ka aɲɪ kalɪa nʊ awɪlɪwa agʊ /
+309893	xx:xx:xx		/ aɣɔ aɣʊɣɔ rinne ɔ ɔ mbɪdɪ je / 
+310775	xx:xx:xx		/ ɣanata wee wetuo obu wee wete /
+311081	xx:xx:xx		/ m ana enene katikɪɪzim m na apaasɪ /
+311281	xx:xx:xx		mụ̄ ǹkè umụ̄ ọchọ ògụ̀ m wee sị yā èhee
+311755	00:00:52			/ kee state /
+337562	xx:xx:xx		/ ɪ maba ʤi kʊba ɔka masizia ʤi wɔlʊ /
+338560	xx:xx:xx		/ oɲe ŋwelu akpʊʊkpʊ ɔgaaa /
+338615	xx:xx:xx		/ ite egwu dɪka ʊmʊ agbɔɣɔ ibuute egwu /
+339094	xx:xx:xx		/ aɲɪ ebuka aɲɪ na-ekpɔkɔbɪ ja ɲaabʊ / 
+339385	00:08:28			/ ɲelu ajɪ na aka oɲeli m na aka ka m welu /
+339519	00:15:22			/ ebe eʤe eʃi kpawajɪ ŋwanni je ko oke ne /
+370600	xx:xx:xx		/ jā nòzu òbòdo òzùzùgboɾigbo a nà-àgba jā / 
+371466	xx:xx:xx		/ /
+373008	xx:xx:xx		/ ɛwʊ a bia i dɔ eɣu ɛwʊ i nɔtee ɛka /
+373384	xx:xx:xx		/ agwɔ awʊ /
+373444	xx:xx:xx		/ uehucaa ja na ɔkʊ gwɔɣaɾɪa ja nnu /
+373572	xx:xx:xx		/ oge ŋwa ɔɟiiba naam ŋwaam ɔɟiiba na /
+373691	xx:xx:xx		/ je aji bia ka ngwana aji ntukwuca ŋwaaji /
+373858	xx:xx:xx		/ na bini egbuo mɛɛ ʤimkpa naatɔ ʃi bini /
+374130	00:03:06	nnà m ị bị̄ā i bị̄ā
+377650	xx:xx:xx		/ ŋwaaɲɪ bɪa ja saʧaa ahʊ ja ja /
+377902	xx:xx:xx		/ kpaʃiʧaa ja aɲa hapʊ gɪ ja je /
+378047	xx:xx:xx		kwe nnwā yā āhụ̀ wu nịnị̄ ya wụrụ
+378330	xx:xx:xx		/ ja wʊrʊ nŋwa akpata ja wʊrʊ nŋwa /
+378748	xx:xx:xx		/ na ahʊ ja ɔwʊ ja wʊ elo akhɪ ɔwʊ otuu /
+382102	xx:xx:xx		/ agʊ 		na agʊ ja ja sʊ ihe /
+382814	xx:xx:xx		/ dʊkɔlwɔwa ja dʊkɔlwɔwa ja dʊkɔlwɔwa /
+383082	xx:xx:xx		/ kpɔfee ja nɔ ɔnʊ ulo nke ɔzɔ /
+383308	xx:xx:xx		/ atʊrʊ atʊrʊ sʊ na ja ŋwere /
+383458	xx:xx:xx		/ ɔ hwʊrʊ akwʊkwɔ eʤi kpuʃie /
+383640	00:01:05			/ ma ebe unu bʊ ʊmʊakwʊkwɔ /
