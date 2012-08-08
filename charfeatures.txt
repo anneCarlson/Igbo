@@ -1,0 +1,7 @@
+1: consonant, 2: vowel
+1: (im)plosive, 2: affricate, 3: fricative, 4: nasal, 5: flap/tap/trill, 6: approximant
+1: labial, 2: (post-)alveolar, 3: labio-velar, 4: palatal, 5: velar and on
+1: unvoiced, 2: voiced
+1: unrounded, 2: rounded
+1: back, 2: mid, 3: front
+1: close, 2: close-mid, 3: open-mid, 4: open

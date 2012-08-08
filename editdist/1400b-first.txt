@@ -1,0 +1,446 @@
+Comparison: 6.166667,7.016667 and 5.5834,7.05
+
+		[t*m]	(5)
+[t*m]	a%t%a%gh%ị%, a%m%a%gh%ị%
+[t*m]	e%m%e%t%e%, e%m%e%m%e%
+[t*m]	e%t%è%è%, e%m%è%è%
+[t*m]	t%a%ch%a%a%, m%a%ch%a%a%
+[t*m]	t%e%r%i%, m%e%r%i%
+
+		[l*r]	(4)
+[l*r]	ch%ọ%l%ọ%, ch%ọ%r%ọ%
+[l*r]	d%i%ọ%kp%a%l%a%, d%i%ọ%kp%a%r%a%
+[l*r]	d%ị%ọ%kp%a%l%a%, d%ị%ọ%kp%a%r%a%
+[l*r]	ọ%ch%ọ%l%ọ%, ọ%ch%ọ%r%ọ%
+
+		[r*h]	(3)
+[r*h]	e%j%i%r%i%, e%j%i%h%i%
+[r*h]	m%e%r%i%e%, m%e%h%i%e%
+[r*h]	nw%e%r%ụ%, nw%e%h%ụ%
+
+		[bhh*h]	(2)
+[bhh*h]	o%bhh%i%a%, o%h%i%a%
+[bhh*h]	o%bhh%ị%a%, o%h%ị%a%
+
+		[gw*h]	(2)
+[gw*h]	gw%ụ%kw%a%n%ụ%, h%ụ%kw%a%n%ụ%
+[gw*h]	gw%ụ%r%ụ%, h%ụ%r%ụ%
+
+		[ụ*r]	(2)
+[ụ*r]	a%k%ụ%a%, a%k%r%a%
+[ụ*r]	a%n%ụ%ọ%, a%n%r%ọ%
+
+		[z*r]	(2)
+[z*r]	d%i%z%i%, d%i%r%i%
+[z*r]	z%ị%kw%a%, r%ị%kw%a%
+
+		[j*r]	(2)
+[j*r]	e%j%i%r%i%, e%r%i%r%i%
+[j*r]	w%e%j%e%, w%e%r%e%
+
+		[t*k]	(2)
+[t*k]	a%gb%a%t%ọ%, a%gb%a%k%ọ%
+[t*k]	e%t%e%e%, e%k%e%e%
+
+		[-t]	(2)
+[-t]	b%e%k%e%t%e%, b%e%k%e%e%
+[-t]	t%e%r%i%e%, e%r%i%e%
+
+		[u*ù]	(2)
+[u*ù]	e%z%u%o%, e%z%ù%o%
+[u*ù]	o%t%u%u%, o%t%u%ù%
+
+		[l*p]	(2)
+[l*p]	a%l%ụ%ọ%, a%p%ụ%ọ%
+[l*p]	k%ọ%ọ%l%ụ%, k%ọ%ọ%p%ụ%
+
+		[l*t]	(2)
+[l*t]	k%ọ%ọ%l%ụ%, k%ọ%ọ%t%ụ%
+[l*t]	ọ%t%ụ%l%ụ%, ọ%t%ụ%t%ụ%
+
+		[l*ch]	(2)
+[l*ch]	a%d%ị%l%a%, a%d%ị%ch%a%
+[l*ch]	m%e%l%i%e%, m%e%ch%i%e%
+
+		[e*u]	(2)
+[e*u]	o%m%e%r%e%, o%m%e%r%u%
+[e*u]	y%e%l%e%, y%e%l%u%
+
+		[g*h]	(2)
+[g*h]	g%a%l%a%, h%a%l%a%
+[g*h]	o%g%i%a%, o%h%i%a%
+
+		[n*r]	(2)
+[n*r]	e%n%i%e%, e%r%i%e%
+[n*r]	kw%e%n%e%, kw%e%r%e%
+
+		[i*e]	(2)
+[i*e]	i%t%i%ny%e%, e%t%i%ny%e%
+[i*e]	n%d%i%i%, n%d%i%e%
+
+		[d*h]	(2)
+[d*h]	d%ụ%kw%a%, h%ụ%kw%a%
+[d*h]	e%d%i%e%, e%h%i%e%
+
+		[r*t]	(2)
+[r*t]	à%r%ụ%ọ%, à%t%ụ%ọ%
+[r*t]	ọ%t%ụ%r%ụ%, ọ%t%ụ%t%ụ%
+
+		[+t]	(2)
+[+t]	a%h%a%l%a%, t%a%h%a%l%a%
+[+t]	e%r%u%e%, e%r%u%t%e%
+
+		[ry*sh]	(1)
+[ry*sh]	e%ry%i%e%, e%sh%i%e%
+
+		[ọ̀*ụ]	(1)
+[ọ̀*ụ]	n%a%-%a%k%ọ̀%, n%a%-%a%k%ụ%
+
+		[ị̄*a]	(1)
+[ị̄*a]	a%gh%a%r%ị̄%, a%gh%a%r%a%
+
+		[gh*w]	(1)
+[gh*w]	ọ%gh%ā%r%ā%, ọ%w%ā%r%ā%
+
+		[bh*w]	(1)
+[bh*w]	ch%ọ%bh%a%, ch%ọ%w%a%
+
+		[bh*m]	(1)
+[bh*m]	d%o%bh%e%, d%o%m%e%
+
+		[ā*a]	(1)
+[ā*a]	a%gh%a%r%ā%, a%gh%a%r%a%
+
+		[à*a]	(1)
+[à*a]	a%gb%à%k%ọ%, a%gb%a%k%ọ%
+
+		[bhh*kw]	(1)
+[bhh*kw]	bhh%ụ%r%ụ%, kw%ụ%r%ụ%
+
+		[bhh*w]	(1)
+[bhh*w]	ch%ọ%bhh%a%, ch%ọ%w%a%
+
+		[bhh*m]	(1)
+[bhh*m]	gb%a%bhh%a%, gb%a%m%a%
+
+		[bhh*r]	(1)
+[bhh*r]	gb%a%bhh%a%, gb%a%r%a%
+
+		[gw*ny]	(1)
+[gw*ny]	n%a%-%e%gw%e%, n%a%-%e%ny%e%
+
+		[gw*r]	(1)
+[gw*r]	b%i%d%o%gw%o%, b%i%d%o%r%o%
+
+		[D*n]	(1)
+[D*n]	D%e%j%e%, n%e%j%e%
+
+		[kw*ny]	(1)
+[kw*ny]	k%e%kw%e%, k%e%ny%e%
+
+		[kw*m]	(1)
+[kw*m]	k%e%kw%e%, k%e%m%e%
+
+		[kw*ch]	(1)
+[kw*ch]	a%d%ị%kw%a%, a%d%ị%ch%a%
+
+		[kw*l]	(1)
+[kw*l]	d%ụ%kw%a%, d%ụ%l%a%
+
+		[kw*n]	(1)
+[kw*n]	d%ụ%kw%a%, d%ụ%n%a%
+
+		[kw*r]	(1)
+[kw*r]	k%e%kw%e%, k%e%r%e%
+
+		[kw*k]	(1)
+[kw*k]	kw%e%n%u%, k%e%n%u%
+
+		[ị*.]	(1)
+[ị*.]	a%t%ụ%ị%, a%t%ụ%.%
+
+		[ị*a]	(1)
+[ị*a]	ị%k%ọ%w%a%l%a%, a%k%ọ%w%a%l%a%
+
+		[-ị]	(1)
+[-ị]	ị%k%ọ%w%a%r%a%, k%ọ%w%a%r%a%
+
+		[ọ*ә]	(1)
+[ọ*ә]	a%l%ụ%ọ%, a%l%ụ%ә%
+
+		[ọ*ā]	(1)
+[ọ*ā]	ọ%gh%ā%r%ā%, ā%gh%ā%r%ā%
+
+		[ọ*e]	(1)
+[ọ*e]	ọ%ch%i%ch%i%, e%ch%i%ch%i%
+
+		[ụ*ị]	(1)
+[ụ*ị]	d%ụ%t%ụ%, d%ị%t%ụ%
+
+		[z*n̄]	(1)
+[z*n̄]	z%ụ%k%ọ%, n̄%ụ%k%ọ%
+
+		[z*gh]	(1)
+[z*gh]	nw%e%z%ị%, nw%e%gh%ị%
+
+		[w*n]	(1)
+[w*n]	w%e%j%e%, n%e%j%e%
+
+		[w*d]	(1)
+[w*d]	w%e%e%t%i%, d%e%e%t%i%
+
+		[m*j]	(1)
+[m*j]	è%m%e%e%, è%j%e%e%
+
+		[m*t]	(1)
+[m*t]	m%ụ%t%a%a%, t%ụ%t%a%a%
+
+		[m*l]	(1)
+[m*l]	è%m%e%e%, è%l%e%e%
+
+		[m*r]	(1)
+[m*r]	e%m%e%l%e%, e%r%e%l%e%
+
+		[m*k]	(1)
+[m*k]	è%m%e%e%, è%k%e%e%
+
+		[j*k]	(1)
+[j*k]	j%e%n%u%, k%e%n%u%
+
+		[t*kp]	(1)
+[t*kp]	e%t%e%e%, e%kp%e%e%
+
+		[t*gh]	(1)
+[t*gh]	a%t%a%a%, a%gh%a%a%
+
+		[t*w]	(1)
+[t*w]	ch%ọ%t%a%, ch%ọ%w%a%
+
+		[t*p]	(1)
+[t*p]	a%t%ụ%t%a%, a%p%ụ%t%a%
+
+		[t*h]	(1)
+[t*h]	o%t%u%u%, o%h%u%u%
+
+		[t*e]	(1)
+[t*e]	m%e%t%e%, m%e%e%e%
+
+		[t*g]	(1)
+[t*g]	m%e%t%e%, m%e%g%e%
+
+		[t*n]	(1)
+[t*n]	a%t%ụ%t%a%, a%t%ụ%n%a%
+
+		[s*gh]	(1)
+[s*gh]	nw%e%s%ị%, nw%e%gh%ị%
+
+		[s*kw]	(1)
+[s*kw]	e%s%u%t%e%, e%kw%u%t%e%
+
+		[s*w]	(1)
+[s*w]	t%ụ%s%a%, t%ụ%w%a%
+
+		[s*n]	(1)
+[s*n]	a%t%ụ%s%a%, a%t%ụ%n%a%
+
+		[s*r]	(1)
+[s*r]	e%s%u%t%e%, e%r%u%t%e%
+
+		[ch*kw]	(1)
+[ch*kw]	ch%ụ%r%ụ%, kw%ụ%r%ụ%
+
+		[-ch]	(1)
+[-ch]	m%e%ch%e%e%, m%e%e%e%
+
+		[u*à]	(1)
+[u*à]	o%t%u%u%, o%t%u%à%
+
+		[u*m]	(1)
+[u*m]	o%t%u%u%, o%t%u%m%
+
+		[u*i]	(1)
+[u*i]	e%r%u%e%, e%r%i%e%
+
+		[u*a]	(1)
+[u*a]	nw%u%ny%i%, nw%a%ny%i%
+
+		[l*r̃]	(1)
+[l*r̃]	d%i%ọ%kp%a%l%a%, d%i%ọ%kp%a%r̃%a%
+
+		[l*h]	(1)
+[l*h]	m%e%l%i%e%, m%e%h%i%e%
+
+		[l*s]	(1)
+[l*s]	b%i%k%ọ%l%ụ%, b%i%k%ọ%s%ụ%
+
+		[l*f]	(1)
+[l*f]	w%e%l%u%, w%e%f%u%
+
+		[-l]	(1)
+[-l]	e%kp%e%l%e%, e%kp%e%e%
+
+		[f*p]	(1)
+[f*p]	a%f%ụ%ọ%, a%p%ụ%ọ%
+
+		[e*à]	(1)
+[e*à]	o%ny%e%e%, o%ny%e%à%
+
+		[e*è]	(1)
+[e*è]	o%ny%e%e%, o%ny%e%è%
+
+		[e*,]	(1)
+[e*,]	o%ny%e%e%, o%ny%e%,%
+
+		[e*m]	(1)
+[e*m]	g%o%s%i%e%, g%o%s%i%m%
+
+		[e*n]	(1)
+[e*n]	e%t%u%ù%, n%t%u%ù%
+
+		[e*i]	(1)
+[e*i]	d%i%r%e%, d%i%r%i%
+
+		[-e]	(1)
+[-e]	e%j%i%r%i%, j%i%r%i%
+
+		[b*gb]	(1)
+[b*gb]	b%a%ny%e%, gb%a%ny%e%
+
+		[b*gw]	(1)
+[b*gw]	a%b%a%n%a%, a%gw%a%n%a%
+
+		[b*h]	(1)
+[b*h]	o%b%i%a%, o%h%i%a%
+
+		[g*Gw]	(1)
+[g*Gw]	g%a%kw%a%n%ụ%, Gw%a%kw%a%n%ụ%
+
+		[g*gw]	(1)
+[g*gw]	a%g%a%kw%a%n%ụ%, a%gw%a%kw%a%n%ụ%
+
+		[g*r]	(1)
+[g*r]	w%e%g%e%, w%e%r%e%
+
+		[g*k]	(1)
+[g*k]	g%a%l%a%, k%a%l%a%
+
+		[n*gh]	(1)
+[n*gh]	ā%n%ā%r%ā%, ā%gh%ā%r%ā%
+
+		[n*kw]	(1)
+[n*kw]	e%n%u%i%gw%e%, e%kw%u%i%gw%e%
+
+		[n*p]	(1)
+[n*p]	a%n%ụ%ọ%, a%p%ụ%ọ%
+
+		[n*h]	(1)
+[n*h]	e%n%i%e%, e%h%i%e%
+
+		[n*l]	(1)
+[n*l]	n%i%n%e%, n%i%l%e%
+
+		[n*b]	(1)
+[n*b]	a%n%ọ%ọ%, a%b%ọ%ọ%
+
+		[n*g]	(1)
+[n*g]	n%à%-%è%kw%u%, g%à%-%è%kw%u%
+
+		[-n]	(1)
+[-n]	e%k%e%n%e%, e%k%e%e%
+
+		[d*kw]	(1)
+[d*kw]	d%ụ%r%ụ%, kw%ụ%r%ụ%
+
+		[d*w]	(1)
+[d*w]	k%e%d%ụ%, k%e%w%ụ%
+
+		[d*m]	(1)
+[d*m]	kw%u%d%u%, kw%u%m%u%
+
+		[d*n]	(1)
+[d*n]	d%ụ%t%ụ%, n%ụ%t%ụ%
+
+		[d*r]	(1)
+[d*r]	e%d%i%e%, e%r%i%e%
+
+		[r*gh]	(1)
+[r*gh]	e%j%i%r%i%, e%j%i%gh%i%
+
+		[r*ch]	(1)
+[r*ch]	m%e%r%i%e%, m%e%ch%i%e%
+
+		[r*k]	(1)
+[r*k]	r%u%g%i%d%e%, k%u%g%i%d%e%
+
+		[-r]	(1)
+[-r]	g%a%r%r%ị%, g%a%r%ị%
+
+		[y*gw]	(1)
+[y*gw]	y%a%r%a%, gw%a%r%a%
+
+		[y*Ch]	(1)
+[y*Ch]	y%i%r%i%, Ch%i%r%i%
+
+		[y*w]	(1)
+[y*w]	ọ%y%ā%r%ā%, ọ%w%ā%r%ā%
+
+		[y*l]	(1)
+[y*l]	k%a%y%a%, k%a%l%a%
+
+		[y*d]	(1)
+[y*d]	y%a%r%a%, d%a%r%a%
+
+		[a*gb]	(1)
+[a*gb]	a%a%a%a%, a%gb%a%a%
+
+		[a*ọ]	(1)
+[a*ọ]	a%gb%a%k%a%, a%gb%a%k%ọ%
+
+		[a*e]	(1)
+[a*e]	t%a%ch%a%a%, t%e%ch%a%a%
+
+		[k*gb]	(1)
+[k*gb]	k%a%t%a%, gb%a%t%a%
+
+		[k*kw]	(1)
+[k*kw]	e%kw%u%k%e%, e%kw%u%kw%e%
+
+		[k*t]	(1)
+[k*t]	e%kw%u%k%e%, e%kw%u%t%e%
+
+		[k*l]	(1)
+[k*l]	e%kw%u%k%e%, e%kw%u%l%e%
+
+		[-k]	(1)
+[-k]	a%gb%a%k%a%, a%gb%a%a%
+
+		[-o]	(1)
+[-o]	o%nw%e%kw%e%n%u%, nw%e%kw%e%n%u%
+
+		[+ē]	(1)
+[+ē]	ch%i%n%ē%k%è%, ch%i%n%ē%ē%k%è%
+
+		[+ọ]	(1)
+[+ọ]	d%ụ%r%ọ%, d%ụ%ọ%r%ọ%
+
+		[+w]	(1)
+[+w]	e%r%u%e%, e%r%u%w%e%
+
+		[+b]	(1)
+[+b]	d%ụ%ị%a%, d%ụ%b%ị%a%
+
+		[+g]	(1)
+[+g]	o%m%e%e%, o%m%e%g%e%
+
+		[+n]	(1)
+[+n]	a%m%ụ%ụ%, a%m%ụ%n%ụ%
+
+		[+d]	(1)
+[+d]	kw%e%n%e%, kw%e%n%d%e%
+
+		[+a]	(1)
+[+a]	k%a%r%ị%, a%k%a%r%ị%
+
+		[+N]	(1)
+[+N]	gw%a%n%ụ%, N%gw%a%n%ụ%
+166

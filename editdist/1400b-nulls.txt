@@ -1,0 +1,667 @@
+		bhh
+9	[-bhh]
+7	[bhh*l]
+15	[bhh*r]
+2	[bhh*a]
+4	[bhh*d]
+15	[bhh*g]
+6	[bhh*k]
+4	[bhh*n]
+1	[bhh*ọ]
+8	[bhh*b]
+1	[bhh*i]
+6	[bhh*ch]
+3	[bhh*e]
+1	[bhh*kp]
+15	[bhh*m]
+3	[bhh*nw]
+23	[bhh*w]
+10	[bhh*kw]
+1	[bhh*è]
+1	[bhh*-]
+2	[bhh*à]
+3	[bhh*gb]
+4	[bhh*z]
+9	[bhh*j]
+1	[bhh*ọ̀]
+10	[bhh*t]
+7	[bhh*p]
+1	[bhh*Nw]
+3	[bhh*ny]
+9	[bhh*s]
+33	[bhh*h]
+2	[bhh*ā]
+6	[bhh*gh]
+1	[bhh*?]
+4	[bhh*y]
+4	[bhh*f]
+2	[bhh*E]
+1	[bhh*J]
+2	[bhh*A]
+15	[bhh*sh]
+2	[bhh*Y]
+3	[bhh*M]
+1	[bhh*N]
+3	[bhh*r̃]
+1	[bhh*Ọ]
+2	[bhh*zh]
+2	[bhh*n̄]
+1	[bhh*kpp]
+2	[bhh*H]
+2	[bhh*kh]
+2	[bhh*G]
+1	[bhh*gɦ]
+1	[bhh*jɦ]
+1	[bhh*dz]
+1	[bhh*À]
+1	[bhh*Sh]
+1	[bhh*D]
+1	[bhh*kwh]
+1	[bhh*ṁ]
+1	[bhh*h̃]
+
+		phh
+4	[-phh]
+3	[phh*l]
+9	[phh*r]
+2	[phh*a]
+5	[phh*d]
+9	[phh*g]
+6	[phh*k]
+3	[phh*n]
+5	[phh*b]
+1	[phh*i]
+3	[phh*ch]
+1	[phh*e]
+3	[phh*kp]
+2	[phh*m]
+3	[phh*nw]
+5	[phh*w]
+4	[phh*kw]
+1	[phh*ù]
+2	[phh*è]
+1	[phh*-]
+2	[phh*à]
+2	[phh*gb]
+2	[phh*z]
+2	[phh*j]
+1	[phh*ọ̀]
+2	[phh*t]
+5	[phh*p]
+1	[phh*Nw]
+3	[phh*ny]
+4	[phh*s]
+26	[phh*h]
+2	[phh*ā]
+3	[phh*gh]
+2	[phh*hw]
+1	[phh*?]
+2	[phh*y]
+4	[phh*f]
+2	[phh*E]
+2	[phh*A]
+10	[phh*sh]
+2	[phh*Y]
+2	[phh*M]
+1	[phh*N]
+2	[phh*r̃]
+1	[phh*Ọ]
+2	[phh*n̄]
+1	[phh*th]
+2	[phh*kpp]
+2	[phh*H]
+1	[phh*kh]
+1	[phh*gɦ]
+1	[phh*jɦ]
+1	[phh*dz]
+1	[phh*À]
+1	[phh*kwh]
+
+		bh
+5	[-bh]
+5	[bh*l]
+10	[bh*r]
+1	[bh*a]
+2	[bh*d]
+7	[bh*g]
+1	[bh*k]
+2	[bh*n]
+3	[bh*b]
+1	[bh*i]
+1	[bh*ch]
+1	[bh*e]
+1	[bh*kp]
+6	[bh*m]
+1	[bh*nw]
+13	[bh*w]
+5	[bh*kw]
+1	[bh*è]
+1	[bh*-]
+1	[bh*gw]
+1	[bh*à]
+1	[bh*gb]
+2	[bh*z]
+2	[bh*t]
+3	[bh*p]
+1	[bh*Nw]
+3	[bh*ny]
+4	[bh*s]
+14	[bh*h]
+1	[bh*ā]
+4	[bh*gh]
+1	[bh*hw]
+1	[bh*y]
+2	[bh*f]
+1	[bh*E]
+1	[bh*A]
+5	[bh*sh]
+2	[bh*Y]
+2	[bh*M]
+3	[bh*r̃]
+1	[bh*n̄]
+2	[bh*H]
+2	[bh*kh]
+1	[bh*gɦ]
+1	[bh*jɦ]
+1	[bh*dz]
+1	[bh*ṁ]
+
+		ph
+3	[-ph]
+2	[ph*l]
+2	[ph*r]
+1	[ph*a]
+2	[ph*d]
+4	[ph*g]
+1	[ph*k]
+1	[ph*n]
+2	[ph*b]
+1	[ph*i]
+2	[ph*ch]
+1	[ph*e]
+1	[ph*kp]
+1	[ph*m]
+1	[ph*nw]
+2	[ph*w]
+2	[ph*kw]
+2	[ph*è]
+2	[ph*à]
+2	[ph*gb]
+3	[ph*z]
+1	[ph*j]
+2	[ph*t]
+2	[ph*p]
+1	[ph*Nw]
+1	[ph*ny]
+1	[ph*s]
+10	[ph*h]
+2	[ph*ā]
+2	[ph*f]
+2	[ph*E]
+1	[ph*A]
+4	[ph*sh]
+2	[ph*Y]
+1	[ph*M]
+1	[ph*N]
+1	[ph*r̃]
+1	[ph*th]
+2	[ph*kpp]
+2	[ph*H]
+2	[ph*kh]
+1	[ph*G]
+1	[ph*jɦ]
+1	[ph*dz]
+1	[ph*À]
+1	[ph*Sh]
+1	[ph*D]
+1	[ph*kwh]
+
+		ẁ
+1	[ẁ*l]
+1	[ẁ*r]
+1	[ẁ*i]
+1	[ẁ*kp]
+1	[ẁ*kw]
+1	[ẁ*è]
+1	[ẁ*ny]
+1	[ẁ*h]
+1	[ẁ*f]
+2	[ẁ*E]
+1	[ẁ*Y]
+1	[ẁ*M]
+1	[ẁ*H]
+1	[ẁ*jɦ]
+1	[ẁ*K]
+
+		̀
+1	[̀*ụ̀]
+1	[̀*w]
+1	[̀*j]
+1	[̀*E]
+1	[̀*ō]
+1	[̀*ə]
+1	[̀*ǝ]
+1	[̀*H]
+1	[̀*À]
+1	[̀*–]
+1	[̀*Ọ̄]
+1	[̀*Ọ̀]
+1	[̀*Ị̀]
+1	[̀*Ò]
+1	[̀*È]
+1	[̀*kp̀]
+1	[̀*ọ̃]
+1	[̀*2]
+
+		 
+1	[ *ụ̀]
+1	[ *w]
+1	[ *j]
+1	[ *E]
+1	[ *ō]
+1	[ *ə]
+1	[ *ǝ]
+1	[ *H]
+1	[ *À]
+1	[ *–]
+1	[ *Ọ̄]
+1	[ *Ọ̀]
+1	[ *Ị̀]
+1	[ *Ò]
+1	[ *È]
+1	[ *kp̀]
+1	[ *ọ̃]
+1	[ *2]
+
+		ky
+1	[ky*l]
+1	[ky*h]
+1	[ky*f]
+1	[ky*sh]
+
+		ã
+1	[ã*ē]
+1	[ã*ị̄]
+
+		bv
+1	[bv*r]
+1	[bv*t]
+1	[bv*sh]
+1	[bv*G]
+1	[bv*Sh]
+1	[bv*D]
+
+		ọ́
+1	[ọ́*ụ̀]
+1	[ọ́*w]
+1	[ọ́*j]
+1	[ọ́*E]
+1	[ọ́*ō]
+1	[ọ́*ə]
+1	[ọ́*ǝ]
+1	[ọ́*H]
+1	[ọ́*À]
+1	[ọ́*–]
+1	[ọ́*Ọ̄]
+1	[ọ́*Ọ̀]
+1	[ọ́*Ị̀]
+1	[ọ́*Ò]
+1	[ọ́*È]
+1	[ọ́*kp̀]
+1	[ọ́*ọ̃]
+1	[ọ́*2]
+
+		W
+1	[W*r]
+1	[W*kp]
+1	[W*kw]
+1	[W*è]
+1	[W*ny]
+1	[W*E]
+1	[W*M]
+1	[W*K]
+
+		0
+
+		:
+
+		6
+
+		4
+
+		3
+
+		5
+
+		7
+
+		8
+
+		gy
+
+		cy
+
+		ì́
+
+		ḿ
+
+		è́
+
+		̃
+
+		r̃
+1	[+r̃]
+6	[l*r̃]
+1	[d*r̃]
+1	[g*r̃]
+2	[n*r̃]
+1	[ch*r̃]
+1	[kp*r̃]
+1	[m*r̃]
+1	[gw*r̃]
+1	[gb*r̃]
+1	[z*r̃]
+1	[s*r̃]
+3	[bhh*r̃]
+1	[gh*r̃]
+1	[hw*r̃]
+1	[f*r̃]
+2	[phh*r̃]
+3	[bh*r̃]
+1	[ph*r̃]
+1	[ṅ*r̃]
+
+		kpp
+1	[n*kpp]
+1	[i*kpp]
+2	[m*kpp]
+1	[p*kpp]
+1	[ny*kpp]
+1	[bhh*kpp]
+1	[f*kpp]
+2	[phh*kpp]
+2	[ph*kpp]
+1	[,*kpp]
+
+		kh
+1	[l*kh]
+1	[d*kh]
+1	[n*kh]
+1	[kp*kh]
+1	[m*kh]
+1	[gb*kh]
+1	[t*kh]
+1	[s*kh]
+2	[bhh*kh]
+1	[hw*kh]
+1	[y*kh]
+1	[f*kh]
+1	[phh*kh]
+2	[bh*kh]
+1	[v*kh]
+2	[ph*kh]
+1	[ṅ*kh]
+
+		Ụ
+1	[+Ụ]
+1	[a*Ụ]
+2	[ụ*Ụ]
+2	[ị*Ụ]
+1	[ọ*Ụ]
+1	[m̀*Ụ]
+
+		ị́
+1	[a*ị́]
+2	[ọ*ị́]
+1	[à*ị́]
+1	[ị̀*ị́]
+1	[ọ̄*ị́]
+1	[ə*ị́]
+
+		gɦ
+1	[l*gɦ]
+1	[b*gɦ]
+1	[ch*gɦ]
+1	[w*gɦ]
+1	[gb*gɦ]
+1	[z*gɦ]
+1	[ny*gɦ]
+1	[s*gɦ]
+1	[bhh*gɦ]
+2	[y*gɦ]
+1	[f*gɦ]
+1	[phh*gɦ]
+1	[bh*gɦ]
+2	[v*gɦ]
+1	[ṅ*gɦ]
+
+		jɦ
+1	[n*jɦ]
+1	[b*jɦ]
+2	[ch*jɦ]
+1	[gb*jɦ]
+2	[t*jɦ]
+1	[ny*jɦ]
+1	[s*jɦ]
+1	[bhh*jɦ]
+1	[gh*jɦ]
+1	[phh*jɦ]
+1	[J*jɦ]
+1	[bh*jɦ]
+1	[ph*jɦ]
+1	[ẁ*jɦ]
+
+		dz
+1	[l*dz]
+2	[d*dz]
+1	[g*dz]
+2	[n*dz]
+2	[t*dz]
+1	[s*dz]
+1	[bhh*dz]
+2	[y*dz]
+1	[f*dz]
+1	[phh*dz]
+1	[bh*dz]
+1	[v*dz]
+1	[ph*dz]
+1	[ry*dz]
+
+		À
+1	[a*À]
+2	[d*À]
+2	[b*À]
+1	[nw*À]
+1	[t*À]
+1	[bhh*À]
+1	[phh*À]
+1	[ph*À]
+1	[á*À]
+1	[̀*À]
+1	[ *À]
+1	[ọ́*À]
+
+		–
+1	[d*–]
+1	[b*–]
+1	[á*–]
+1	[̀*–]
+1	[ *–]
+1	[ọ́*–]
+
+		Ọ̄
+1	[d*Ọ̄]
+1	[b*Ọ̄]
+1	[á*Ọ̄]
+1	[̀*Ọ̄]
+1	[ *Ọ̄]
+1	[ọ́*Ọ̄]
+
+		Ọ̀
+1	[+Ọ̀]
+1	[d*Ọ̀]
+1	[b*Ọ̀]
+1	[o*Ọ̀]
+1	[á*Ọ̀]
+1	[̀*Ọ̀]
+1	[ *Ọ̀]
+1	[ọ́*Ọ̀]
+
+		Ị̀
+1	[d*Ị̀]
+1	[b*Ị̀]
+1	[á*Ị̀]
+1	[̀*Ị̀]
+1	[ *Ị̀]
+1	[ọ́*Ị̀]
+
+		Ò
+1	[d*Ò]
+1	[b*Ò]
+1	[á*Ò]
+1	[̀*Ò]
+1	[ *Ò]
+1	[ọ́*Ò]
+
+		È
+1	[d*È]
+1	[b*È]
+1	[á*È]
+1	[̀*È]
+1	[ *È]
+1	[ọ́*È]
+
+		kp̀
+1	[d*kp̀]
+1	[b*kp̀]
+1	[á*kp̀]
+1	[̀*kp̀]
+1	[ *kp̀]
+1	[ọ́*kp̀]
+
+		ọ̃
+1	[d*ọ̃]
+1	[b*ọ̃]
+1	[á*ọ̃]
+1	[̀*ọ̃]
+1	[ *ọ̃]
+1	[ọ́*ọ̃]
+
+		Sh
+1	[l*Sh]
+1	[b*Sh]
+1	[kp*Sh]
+1	[kw*Sh]
+1	[gb*Sh]
+1	[z*Sh]
+1	[p*Sh]
+1	[ny*Sh]
+1	[bhh*Sh]
+1	[y*Sh]
+1	[Y*Sh]
+1	[ph*Sh]
+1	[bv*Sh]
+
+		kwh
+1	[g*kwh]
+1	[-*kwh]
+1	[gw*kwh]
+1	[bhh*kwh]
+1	[y*kwh]
+1	[phh*kwh]
+1	[ph*kwh]
+
+		ḍ
+1	[r*ḍ]
+1	[ch*ḍ]
+1	[kp*ḍ]
+1	[gh*ḍ]
+
+		ṁ
+1	[d*ṁ]
+1	[kw*ṁ]
+1	[bhh*ṁ]
+1	[bh*ṁ]
+
+		H̀
+1	[a*H̀]
+1	[à*H̀]
+
+		z̃
+1	[k*z̃]
+1	[n*z̃]
+1	[gw*z̃]
+1	[gb*z̃]
+1	[s*z̃]
+1	[hw*z̃]
+1	[v*z̃]
+
+		h̃
+1	[bhh*h̃]
+1	[v*h̃]
+
+		Gw
+1	[l*Gw]
+1	[d*Gw]
+1	[g*Gw]
+1	[ch*Gw]
+1	[w*Gw]
+1	[j*Gw]
+1	[t*Gw]
+1	[G*Gw]
+
+		dɦ
+1	[g*dɦ]
+1	[k*dɦ]
+1	[n*dɦ]
+1	[b*dɦ]
+1	[w*dɦ]
+1	[gw*dɦ]
+
+		Ụ̀
+1	[ụ*Ụ̀]
+
+		Ǹ
+1	[ụ*Ǹ]
+1	[e*Ǹ]
+
+		lw
+1	[l*lw]
+1	[d*lw]
+1	[n*lw]
+1	[ch*lw]
+1	[u*lw]
+1	[z*lw]
+
+		Ì
+1	[e*Ì]
+
+		Th
+1	[b*Th]
+
+		x
+
+		Kw
+
+		L
+
+		r̀
+
+		M̀
+
+		s̀
+
+		Ō
+
+		P
+
+		/
+
+		h̀
+
+		q
+
+		ts
+
+		à̀
+
