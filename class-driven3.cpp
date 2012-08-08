@@ -13,7 +13,7 @@ using namespace std;
 #define DELTA 0.
 #define ITER 100000
 #define INCR 2500
-#define DIST_POWER .1
+#define DIST_POWER 0
 #define MIN_COUNT 2
 
 typedef unsigned char enc_town;
@@ -1034,7 +1034,7 @@ double total_log_prob (map<enc_town, map<wstring, float> >& town_dicts) {
 	}
       }
       else
-	to_return += log(pow(1-exp_prob, arf_totals[i]));
+	to_return += log(pow(pow(1-exp_prob, arf_totals[i]), DIST_POWER));
     }
     if (isnan(to_return) != 0)
       break;
@@ -1346,7 +1346,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	  best_prob = i;
 	  top_log_prob = log_prob;
 	}
-	wcout << i << "\t" << class_probs[i] << "\t" << log_prob << endl;
+	wcout << iter << "\t" << i << "\t" << class_probs[i] << "\t" << log_prob << endl;
 	remove_counts (curr_town, curr_word_enc, curr_count, i);*/
 	/*running_total += class_probs[i]*RAND_MAX/total_prob;
 	  if (target < running_total) {
@@ -1366,10 +1366,10 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
       remove_class (curr_class);
     // mark the connection everywhere, adjust the sound correspondence counts of the cognate class's other members
     add_counts (curr_town, curr_word_enc, curr_count, chosen);
-    //if (best_prob != chosen) {
-    //wcout << iter << "\t" << curr_town << ", " << curr_word << ", " << curr_word_enc << ", " << curr_class << "\t" << best_prob << ": " << class_probs[best_prob] << ", " << top_log_prob << "\t" << chosen << ": " << class_probs[chosen] << ", " << chosen_log_prob << endl;
-      //break;
-    //}
+    /*if (best_prob != chosen) {
+    wcout << iter << "\t" << curr_town << ", " << curr_word << ", " << curr_word_enc << ", " << curr_class << "\t" << best_prob << ": " << class_probs[best_prob] << ", " << top_log_prob << "\t" << chosen << ": " << class_probs[chosen] << ", " << chosen_log_prob << endl;
+      break;
+      }*/
   }
   // print out all the sound correspondence counts and cognate classes
   ofstream outfile (out1);
@@ -1401,7 +1401,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	output << '\n';*/
 	
   
-  multimap<int, enc_word*> inverse_cog_class;
+  /*multimap<int, enc_word*> inverse_cog_class;
   map<cog_class, enc_word*>::iterator it4;
   for (it4=cognate_classes.begin(); it4 != cognate_classes.end(); it4++) 
   {
@@ -1439,9 +1439,9 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
       //outfile2 << i << "\t" << it4->second[i] << "\t" << WChar_to_UTF8 (word_decoding[it4->second[i]].c_str()) << endl;
     }
     outfile2 << endl;
-    }
+    }*/
   
-  /*map<cog_class, enc_word*>::iterator it4;
+  map<cog_class, enc_word*>::iterator it4;
   for (it4=cognate_classes.begin(); it4 != cognate_classes.end(); it4++) {
     for (int i=0; i < town_enc_ct; i++) {
       if (it4->second[i] >= 0)
