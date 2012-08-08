@@ -11,10 +11,10 @@ using namespace std;
 
 #define GAMMA 0.0001
 #define DELTA 0.
-#define ITER 10000
+#define ITER 500000
 #define INCR 2500
 #define DIST_POWER 1
-#define MIN_COUNT 5
+#define MIN_COUNT 2
 
 typedef unsigned char enc_town;
 typedef int enc_word;
@@ -223,13 +223,13 @@ void write_bigrams_to_file(map<Town, vector<wstring> >& town_vectors, char* outF
 {
   ofstream output (outFile);
   map<Town, vector<wstring> >::iterator i;
-  i = town_vectors.begin();
-  int loops=0;
-  //for(i = town_vectors.begin(); i != town_vectors.end(); i++)
-  while (loops < 10)
+  //i = town_vectors.begin();
+  //int loops=0;
+  for(i = town_vectors.begin(); i != town_vectors.end(); i++)
+  //while (loops < 10)
   {
-	i++;
-	loops++;
+	//i++;
+	//loops++;
 	Town thisTown = i->first;
 	//cout << "Coordinates:\t" << thisTown.first << "," << thisTown.second << "\n";
 	vector<wstring> words = i->second;
@@ -513,6 +513,7 @@ void gather_bigrams (map<enc_town, map<wstring, float> >& town_dicts, const char
     }
   }
 }
+
 
 void char_distance_calc (const char* charfile) {
   char_distances = new short* [enc_ct];
@@ -891,7 +892,7 @@ void add_counts (enc_town curr_town, enc_word curr_word, float curr_count, cog_c
   cognates[curr_town][curr_word] = new_class;
   cognate_classes[new_class][curr_town] = curr_word;
   class_counts[new_class] += curr_count;
-  /*map<enc_word, int>::iterator it1;
+  map<enc_word, int>::iterator it1;
   for (it1=town_bigrams[curr_town][curr_word].begin(); it1 != town_bigrams[curr_town][curr_word].end(); it1++) {
     cog_class second_class = cognates[curr_town][it1->first];
     if (class_bigrams[second_class].count(new_class) == 0)
@@ -905,7 +906,7 @@ void add_counts (enc_town curr_town, enc_word curr_word, float curr_count, cog_c
     class_bigrams[new_class][first_class] += it1->second;
   }
   // fix this eventually
-  class_firsts[new_class] += town_firsts[curr_town][curr_word];*/
+  class_firsts[new_class] += town_firsts[curr_town][curr_word];
   for (int i=0; i < town_enc_ct; i++) {
     enc_word neighbor_word = cognate_classes[new_class][i];
     if (neighbor_word >= 0) {
@@ -927,7 +928,7 @@ void add_counts (enc_town curr_town, enc_word curr_word, float curr_count, cog_c
 void remove_counts (enc_town curr_town, enc_word curr_word, float curr_count, cog_class old_class) {
   cognate_classes[old_class][curr_town] = -1;
   class_counts[old_class] -= curr_count;
-  /*map<enc_word, int>::iterator it1;
+  map<enc_word, int>::iterator it1;
   for (it1=town_bigrams[curr_town][curr_word].begin(); it1 != town_bigrams[curr_town][curr_word].end(); it1++) {
     cog_class second_class = cognates[curr_town][it1->first];
     class_bigrams[second_class][old_class] -= it1->second;
@@ -940,7 +941,7 @@ void remove_counts (enc_town curr_town, enc_word curr_word, float curr_count, co
     if (class_bigrams[old_class][first_class] = 0)
       class_bigrams[old_class].erase (first_class);
   }
-  class_firsts[old_class] -= town_firsts[curr_town][curr_word];*/
+  class_firsts[old_class] -= town_firsts[curr_town][curr_word];
   for (int i=0; i < town_enc_ct; i++) {
     enc_word neighbor_word = cognate_classes[old_class][i];
     if (neighbor_word >= 0) {
@@ -1103,7 +1104,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	for (it2=neighbors[i].begin(); it2 != neighbors[i].end(); it2++) {
 	  if (i > *it2) {
 	    map<wstring, float> neighbor_dict = town_dicts[*it2];
-	    //cout << cognate_classes[cognates[*it2][it1->first]][i] <<"\n";
+	    //wcout << cognate_classes[cognates[*it2][it1->first]][i] <<"\n";
 	    if (neighbor_dict.count(word_decoding[it1->first]) == 1 && cognate_classes[cognates[*it2][it1->first]][i] == -1) {
 	      best_match = it1->first;
 	      best_class = cognates[*it2][it1->first];
@@ -1133,6 +1134,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	  if (it1->second != old_class)
 	    remove_class (old_class);
 	}
+	
       }
     }
   }
@@ -1271,7 +1273,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	  }
 	  }
 	// bigram
-	/*change_prob = 1;
+	change_prob = 1;
 	map<enc_word, int>::iterator it4;
 	// find the change in bigram probabilities involving our given word (both as the first and second words of the bigram)
 	for (it4=reverse_bigrams[curr_town][curr_word_enc].begin(); it4 != reverse_bigrams[curr_town][curr_word_enc].end(); it4++) {
@@ -1284,7 +1286,8 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	  cog_class second_class = cognates[curr_town][it4->first];
 	  double old_bigram_prob = (class_bigrams[second_class][new_class] + (class_counts[second_class]/arf_total)*DELTA)/(class_firsts[new_class] + DELTA);
 	  double new_bigram_prob = (class_bigrams[second_class][new_class] + it4->second + (class_counts[second_class]/arf_total)*DELTA)/(class_firsts[new_class] + town_firsts[curr_town][curr_word_enc] + DELTA);
-	}*/
+	  change_prob *= new_bigram_prob/old_bigram_prob;
+	}
 	// calculate the probability of the given word being a cognate of each of its potential neighbors
 	for (it=neighbors[curr_town].begin(); it != neighbors[curr_town].end(); it++) {
 	  enc_word new_neighbor_word = cognate_classes[new_class][*it];
@@ -1423,7 +1426,7 @@ int main (int argc, char* argv[]) {
   write_bigrams_to_file(town_vectors, argv[2]);*/
       
   gather_lists (town_dicts, argv[1]);
-  //gather_bigrams (town_dicts, argv[2]);
+  gather_bigrams (town_dicts, argv[2]);
   //cout << "please \n";
   char_distance_calc (argv[3]);
   //cout << "pretty please \n";
