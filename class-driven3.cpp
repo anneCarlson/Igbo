@@ -968,7 +968,10 @@ void remove_counts (enc_town curr_town, enc_word curr_word, float curr_count, co
     if (class_bigrams[old_class][first_class] = 0)
       class_bigrams[old_class].erase (first_class);
   }
+  int before = class_firsts[old_class];
   class_firsts[old_class] -= town_firsts[curr_town][curr_word];
+  //if(class_firsts[old_class]<0)
+   // wcout << before << " - " << town_firsts[curr_town][curr_word] << " = " << class_firsts[old_class] << "\t" << curr_town << "\t" << curr_word << "\n";
   for (int i=0; i < town_enc_ct; i++) {
     enc_word neighbor_word = cognate_classes[old_class][i];
     if (neighbor_word >= 0) {
@@ -1043,17 +1046,28 @@ double total_log_prob (map<enc_town, map<wstring, float> >& town_dicts) {
     if (isnan(to_return) != 0)
       break;
   }
-  /*map<cog_class, map<cog_class, int> >::iterator it3;
+  map<cog_class, map<cog_class, int> >::iterator it3;
   map<cog_class, int>::iterator it4;
   for (it3=class_bigrams.begin(); it3 != class_bigrams.end(); it3++) {
     for (it4=it3->second.begin(); it4 != it3->second.end(); it4++) {
-      wcout << it3->first << "\t" << it4->first << "\t" << it4->second << "\t" << class_counts[it3->first] << "\t" << class_firsts[it4->first] << endl;
+     // wcout << it3->first << "\t" << it4->first << "\t" << it4->second << "\t" << class_counts[it3->first] << "\t" << class_firsts[it4->first] << endl;
+     /*if(class_firsts[it4->first]<0)
+     {
+       wcout << "well shit... " << class_firsts[it4->first] << "\t" << it4->first << "\n";
+             for (int i=0; i < town_enc_ct; i++)
+	{
+	  if (cognate_classes[it4->first][i]>-1)
+	    wcout << cognate_classes[it4->first][i] << "\n";     
+	}
+     }*/
+      //map<cog_class, enc_word*> cognate_classes;
+    
       to_return += log((it4->second + (class_counts[it3->first]/arf_total)*DELTA)/(class_firsts[it4->first] + DELTA));
     }
-    wcout << it3->first << "\t" << to_return << endl;
-    if (isnan(to_return) != 0)
-      break;
-      }*/
+    //wcout << it3->first << "\t" << to_return << endl;
+    /*if (isnan(to_return) != 0)
+      break;*/
+      }
   return to_return;
 }
 
@@ -1471,12 +1485,13 @@ int main (int argc, char* argv[]) {
   /*map<Town, vector<wstring> > town_vectors;
   vectorize_all (town_vectors, argv[1]);
   write_bigrams_to_file(town_vectors, argv[2]);*/
+  
 
   vector<set<enc_char> > chars;
   gather_lists (town_dicts, chars, argv[1]);
   gather_bigrams (town_dicts, argv[2]);
   char_distance_calc (chars, argv[3]);
   find_cognates (town_dicts, argv[5], argv[6], argv[4]);
-
+  
   return 0;
 }
