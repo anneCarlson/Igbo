@@ -11,7 +11,8 @@ using namespace std;
 
 #define GAMMA 20
 #define DELTA 1.0
-#define ITER 1
+#define EPSILON 1.0
+#define ITER 50000
 #define INCR 2500
 #define DIST_POWER 1
 #define MIN_COUNT 2
@@ -937,7 +938,7 @@ void add_counts (enc_town curr_town, enc_word curr_word, float curr_count, cog_c
   //class_firsts[new_class] += town_firsts[curr_town][curr_word];
   for (it1=reverse_bigrams[curr_town][curr_word].begin(); it1 != reverse_bigrams[curr_town][curr_word].end(); it1++) {
     cog_class first_class = cognates[curr_town][it1->first];
-    if (!initial || first_class == 0) {
+    if ((!initial || first_class == 0) && first_class != new_class) {
       if (class_bigrams[new_class].count(first_class) == 0)
 	class_bigrams[new_class][first_class] = 0;
       class_bigrams[new_class][first_class] += it1->second;
@@ -973,13 +974,18 @@ void remove_counts (enc_town curr_town, enc_word curr_word, float curr_count, co
     if (class_bigrams[second_class][old_class] == 0)
       class_bigrams[second_class].erase (old_class);
     class_firsts[old_class] -= it1->second;
+    //wcout << "here \n";
   }
   for (it1=reverse_bigrams[curr_town][curr_word].begin(); it1 != reverse_bigrams[curr_town][curr_word].end(); it1++) {
     cog_class first_class = cognates[curr_town][it1->first];
-    class_bigrams[old_class][first_class] -= it1->second;
-    if (class_bigrams[old_class][first_class] = 0)
-      class_bigrams[old_class].erase (first_class);
-    class_firsts[first_class] -= it1->second;
+    if (first_class != old_class) {
+      class_bigrams[old_class][first_class] -= it1->second;
+      if (class_bigrams[old_class][first_class] == 0)
+	class_bigrams[old_class].erase (first_class);
+      
+      class_firsts[first_class] -= it1->second;
+      
+    }
   }
    // wcout << before << " - " << town_firsts[curr_town][curr_word] << " = " << class_firsts[old_class] << "\t" << curr_town << "\t" << curr_word << "\n";
   for (int i=0; i < town_enc_ct; i++) {
@@ -1029,6 +1035,30 @@ double word_match_prob (enc_town first_town, enc_town second_town, enc_word firs
   return prob_to_return;
 }
 
+double TESTING_word_match_prob (enc_town first_town, enc_town second_town, enc_word first_word, enc_word second_word, bool adding_word, enc_change change) {
+  double prob_to_return = 1;
+  map<enc_change, int> change_counts = find_adjust (first_town, second_town, first_word, second_word, change);
+  map<enc_change, int>::iterator it;
+  int a_to_b;
+  int a_to_anything;
+  for (it=change_counts.begin(); it != change_counts.end(); it++) {
+    if (it->second > 0) {
+      a_to_b = corr_counts[first_town][second_town][it->first];
+      a_to_anything = corr_totals[second_town][first_town][it->first/512];
+      if (adding_word) {
+	a_to_b += it->second;
+	a_to_anything += it->second;
+      }
+      prob_to_return *= pow((a_to_b + GAMMA/char_distances[it->first/512][it->first%512]) / (a_to_anything + distance_sum[first_town][second_town][it->first/512]*GAMMA), it->second);
+      if (pow((a_to_b + GAMMA/char_distances[it->first/512][it->first%512]) / (a_to_anything + distance_sum[first_town][second_town][it->first/512]*GAMMA), it->second) ==0)
+	wcout << "word_match_prob: " << a_to_anything << "\t" << distance_sum[first_town][second_town][it->first/512] << "\t" << a_to_anything + distance_sum[first_town][second_town][it->first/512]*GAMMA << "\t" <<  it->second <<"\n";
+      //wcout << first_town << "," << second_town << "\t" << represent_change(it->first) << "\t" << a_to_anything << "," << a_to_b << "\t" << char_distances[it->first/512][it->first%512] << "\t" << distance_sum[first_town][second_town][it->first/512] << endl;
+    }
+  }
+  //wcout << word_decoding[first_word] << "\t" << word_decoding[second_word] << "\t" << prob_to_return << endl;
+  return prob_to_return;
+}
+
 double total_log_prob (map<enc_town, map<wstring, float> >& town_dicts) {
   double to_return = 0;
   map<cog_class, enc_word*>::iterator it1;
@@ -1046,6 +1076,11 @@ double total_log_prob (map<enc_town, map<wstring, float> >& town_dicts) {
 	  enc_word new_neighbor_word = it1->second[*it2];
 	  if (new_neighbor_word >= 0) {
 	    to_return += log(word_match_prob(i, *it2, curr_word, new_neighbor_word, false, find_change(curr_word, new_neighbor_word)));
+	    if(log(word_match_prob(i, *it2, curr_word, new_neighbor_word, false, find_change(curr_word, new_neighbor_word)))<-100)
+	    {
+	      wcout << log(word_match_prob(i, *it2, curr_word, new_neighbor_word, false, find_change(curr_word, new_neighbor_word))) << "\t" << word_match_prob(i, *it2, curr_word, new_neighbor_word, false, find_change(curr_word, new_neighbor_word)) << "\t" << curr_word << ": "<< word_decoding[curr_word] <<"\t" <<new_neighbor_word << ": "<< word_decoding[new_neighbor_word]<< "\t" << *it2 << "\t" << i << "\n";
+	      TESTING_word_match_prob(i, *it2, curr_word, new_neighbor_word, false, find_change(curr_word, new_neighbor_word));
+	    }
 	    //wcout << it1->first << "\t" << i << "\t" << curr_word << "\t" << *it2 << "\t" << new_neighbor_word << "\t" << word_match_prob(i, *it2, curr_word, new_neighbor_word, false, find_change(curr_word, new_neighbor_word)) << "\t" << binomial_prob(curr_count, arf_totals[i], exp_prob) << "\t" << to_return << endl;
 	  }
 	}
@@ -1056,16 +1091,20 @@ double total_log_prob (map<enc_town, map<wstring, float> >& town_dicts) {
     if (isnan(to_return) != 0)
       break;
   }
+  
   map<cog_class, map<cog_class, int> >::iterator it3;
   map<cog_class, int>::iterator it4;
+  int iterations=0;
   for (it3=class_bigrams.begin(); it3 != class_bigrams.end(); it3++) {
     for (it4=it3->second.begin(); it4 != it3->second.end(); it4++) {
       if(class_firsts[it4->first]<0)
 	wcout << it3->first << "\t" << it4->first << "\t" << it4->second << "\t" << class_counts[it3->first] << "\t" << class_firsts[it4->first] << "\t" << class_counts[it4->first] << endl;
+
       to_return += log((it4->second + (class_counts[it3->first]/arf_total)*DELTA)/(class_firsts[it4->first] + DELTA));
+      //wcout << to_return << endl;
     }
    // wcout << it3->first << "\t" << to_return << endl;
-    if (to_return < -9999999999999999999.)
+    if (isnan(to_return) != 0 || to_return < -9999999999999999999.)
       break;
   }
   return to_return;
@@ -1125,7 +1164,8 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
     map<enc_word, cog_class>::iterator it;
     int l=0;
     for (it=cognates[i].begin(); it != cognates[i].end(); it++) {
-      map<enc_word, int>::iterator it1;
+      add_counts(i, it->first, town_dicts[i][word_decoding[it->first]], it->second, true);
+      /*map<enc_word, int>::iterator it1;
       for (it1=town_bigrams[i][it->first].begin(); it1 != town_bigrams[i][it->first].end(); it1++) {
 	wcout << "here \n";
 	add_counts(it1->first, it->first, town_firsts[i][it1->first], it->second, true);
@@ -1138,8 +1178,9 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	  if (class_bigrams[second_class].count(it->second) == 0)
 	    class_bigrams[second_class][it->second] = 0;
 	  class_bigrams[second_class][it->second] += it1->second;
+
+	}
 	}*/
-      }
     }
   }
   /*for (int i=0; i < town_enc_ct; i++) {
@@ -1196,6 +1237,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	}
 	if (best_match >= 0) {
 	  cog_class old_class = it1->second;
+	  remove_counts (i, it1->first, word_count, old_class);
 	  it1->second = best_class;
 	  add_counts (i, it1->first, word_count, it1->second, false);
 	  if (it1->second != old_class)
@@ -1205,6 +1247,20 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
       }
     }
   }
+  for (int i=0; i < town_enc_ct; i++)
+  {
+     map<enc_word, map<enc_word, int> >::iterator w1;
+     for(w1 = town_bigrams[i].begin(); w1 != town_bigrams[i].end(); w1++)
+     {
+	map<enc_word, int>::iterator w2;
+	for(w2 = w1->second.begin(); w2 != w1->second.end(); w2++)
+	{
+	  if(w2->second < 0)
+	    wcout << w2->second << "\t" << i << "\t" << w1->first << "\t" << w2->first << "\n";
+	}
+     }
+  }
+  // map<enc_word, map<enc_word, int> >* town_bigrams;
   // read initial classes from file
   /*ifstream initial (initfile);
   add_class (cog_class_ct);
@@ -1245,6 +1301,18 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
   srand (0);
   int iter = 0;
   while (iter < ITER) {
+    /*map<enc_word, map<enc_word, int> >::iterator w1;
+	for(w1 = class_bigrams.begin(); w1 != class_bigrams.end(); w1++)
+	{
+	    map<enc_word, int>::iterator w2;
+	    for(w2 = w1->second.begin(); w2 != w1->second.end(); w2++)
+	    {
+	      if(w2->second < 0)
+		wcout << w2->second <<  "\t" << w1->first << "\t" << w2->first << "\n";
+	    }
+	}*/
+
+  
     if (iter % INCR == 0) {
       wcout << iter << "\t" << total_log_prob(town_dicts) << "\t" << cognate_classes.size() << endl;
     }
@@ -1339,19 +1407,18 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	  }
 	}
 	// bigram
-	change_prob = 1;
 	map<enc_word, int>::iterator it4;
 	// find the change in bigram probabilities involving our given word (both as the first and second words of the bigram)
 	for (it4=reverse_bigrams[curr_town][curr_word_enc].begin(); it4 != reverse_bigrams[curr_town][curr_word_enc].end(); it4++) {
 	  cog_class first_class = cognates[curr_town][it4->first];
-	  double old_bigram_prob = (class_bigrams[new_class][first_class] + (class_counts[new_class]/arf_total)*DELTA)/(class_firsts[first_class] + DELTA);
-	  double new_bigram_prob = (class_bigrams[new_class][first_class] + it4->second + (class_counts[new_class]+town_dicts[curr_town][curr_word]/arf_total)*DELTA)/(class_firsts[first_class] + DELTA);
+	  double old_bigram_prob = (class_bigrams[new_class][first_class] + (class_counts[new_class]/arf_total)*DELTA+EPSILON)/(class_firsts[first_class] + DELTA +cognate_classes.size());
+	  double new_bigram_prob = (class_bigrams[new_class][first_class] + it4->second + ((class_counts[new_class]+town_dicts[curr_town][curr_word])/arf_total)*DELTA+EPSILON)/(class_firsts[first_class] + DELTA+cognate_classes.size());
 	  change_prob *= new_bigram_prob/old_bigram_prob;
 	}
 	for (it4=town_bigrams[curr_town][curr_word_enc].begin(); it4 != town_bigrams[curr_town][curr_word_enc].end(); it4++) {
 	  cog_class second_class = cognates[curr_town][it4->first];
-	  double old_bigram_prob = (class_bigrams[second_class][new_class] + (class_counts[second_class]/arf_total)*DELTA)/(class_firsts[new_class] + DELTA);
-	  double new_bigram_prob = (class_bigrams[second_class][new_class] + it4->second + (class_counts[second_class]/arf_total)*DELTA)/(class_firsts[new_class] + town_firsts[curr_town][curr_word_enc] + DELTA);
+	  double old_bigram_prob = (class_bigrams[second_class][new_class] + (class_counts[second_class]/arf_total)*DELTA+EPSILON)/(class_firsts[new_class] + DELTA+cognate_classes.size());
+	  double new_bigram_prob = (class_bigrams[second_class][new_class] + it4->second + (class_counts[second_class]/arf_total)*DELTA+EPSILON)/(class_firsts[new_class] + town_firsts[curr_town][curr_word_enc] + DELTA+cognate_classes.size());
 	  change_prob *= new_bigram_prob/old_bigram_prob;
 	}
 	// calculate the probability of the given word being a cognate of each of its potential neighbors
@@ -1383,14 +1450,14 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
     //bool done = false;
     for (int i=0; i < cog_class_ct; i++) {
       if (class_probs[i] > 0) {
-	add_counts (curr_town, curr_word_enc, curr_count, i, false);
+	/*add_counts (curr_town, curr_word_enc, curr_count, i, false);
 	double log_prob = total_log_prob(town_dicts);
 	if (log_prob > top_log_prob) {
 	  best_prob = i;
 	  top_log_prob = log_prob;
 	}
 	wcout << iter << "\t" << i << "\t" << class_probs[i] << "\t" << log_prob << endl;
-	remove_counts (curr_town, curr_word_enc, curr_count, i);
+	remove_counts (curr_town, curr_word_enc, curr_count, i);*/
 	/*running_total += class_probs[i]*RAND_MAX/total_prob;
 	  if (target < running_total) {
 	  chosen = i;
@@ -1399,9 +1466,9 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	if (class_probs[i] > top_prob) {
 	  chosen = i;
 	  top_prob = class_probs[i];
-	  chosen_log_prob = log_prob;
+	  //chosen_log_prob = log_prob;
 	}
-	}
+      }
     }
     //wcout << chosen << endl;
     // if the word's former class is empty, remove it
@@ -1409,10 +1476,10 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
       remove_class (curr_class);
     // mark the connection everywhere, adjust the sound correspondence counts of the cognate class's other members
     add_counts (curr_town, curr_word_enc, curr_count, chosen, false);
-    if (best_prob != chosen) {
+    /*if (best_prob != chosen) {
     wcout << iter << "\t" << curr_town << ", " << curr_word << ", " << curr_word_enc << ", " << curr_class << "\t" << best_prob << ": " << class_probs[best_prob] << ", " << top_log_prob << "\t" << chosen << ": " << class_probs[chosen] << ", " << chosen_log_prob << endl;
     //break;
-      }
+    }*/
   }
   // print out all the sound correspondence counts and cognate classes
   ofstream outfile (out1);
@@ -1444,7 +1511,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	output << '\n';*/
 	
   
-  /*multimap<int, enc_word*> inverse_cog_class;
+  multimap<int, enc_word*> inverse_cog_class;
   map<cog_class, enc_word*>::iterator it4;
   for (it4=cognate_classes.begin(); it4 != cognate_classes.end(); it4++) 
   {
@@ -1482,9 +1549,9 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
       //outfile2 << i << "\t" << it4->second[i] << "\t" << WChar_to_UTF8 (word_decoding[it4->second[i]].c_str()) << endl;
     }
     outfile2 << endl;
-    }*/
+    }
   
-  map<cog_class, enc_word*>::iterator it4;
+ /* map<cog_class, enc_word*>::iterator it4;
   for (it4=cognate_classes.begin(); it4 != cognate_classes.end(); it4++) {
     for (int i=0; i < town_enc_ct; i++) {
       if (it4->second[i] >= 0)
