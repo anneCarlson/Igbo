@@ -83,6 +83,10 @@ bool one_change (Word& first, Word& second, enc_change& change) {
     return false;
   int i=0, j=0;
   if (diff == 1) {
+    if (first_size == 1) {
+      change = first[i]*512;
+      return true;
+    }
     while (i < first_size) {
       if (first[i] == second[j]) {
 	i++;
@@ -100,6 +104,10 @@ bool one_change (Word& first, Word& second, enc_change& change) {
     }
   }
   else if (diff == -1) {
+    if (second_size == 1) {
+      change = second[j];
+      return true;
+    }
     while (j < second_size) {
       if (first[i] == second[j]) {
 	i++;
