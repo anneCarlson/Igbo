@@ -1281,6 +1281,14 @@ double find_change_prob (map<enc_town, map<wstring, float> >& town_dicts, enc_to
 }
 
 void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char* out1, const char* out2, const char* initfile) {
+  int** not_to_move = new int* [town_enc_ct];
+  for (int towns=0; towns < town_enc_ct; towns++)
+  {
+    not_to_move [towns] = new int [word_enc_ct];
+    for (int words=0; words < word_enc_ct; words++)
+      not_to_move[towns][words] = 0;
+  }
+  
   neighbors = new vector<enc_town> [town_enc_ct];
   cognates = new map<enc_word, cog_class> [town_enc_ct];
   word_lists = new vector<enc_word> [town_enc_ct];
@@ -1411,6 +1419,10 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	    remove_class (old_class);
 	    //it1->second = best_class;
 	    add_counts (i, it1->first, word_count, best_class, false);
+	    //wcout << "town_enc_ct: " << town_enc_ct << "\n";
+	    //wcout << "best_match: "  << best_match << "\n";
+	    //wcout << "not_to_move [town_enc_ct] [best_match]: "  << not_to_move [town_enc_ct] [best_match] << "\n\n";
+	    not_to_move [i] [best_match] = 1;
 	  }
 	}
 	
@@ -1492,6 +1504,11 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
     // choose a random word in a random town
     enc_town curr_town = rand() % town_enc_ct; 
     enc_word curr_word_enc = word_lists[curr_town][rand() % word_counts[curr_town]];
+    while (not_to_move [curr_town] [curr_word_enc] == 0)
+    {
+      curr_town = rand() % town_enc_ct; 
+      curr_word_enc = word_lists[curr_town][rand() % word_counts[curr_town]];
+    }
     wstring curr_word = word_decoding[curr_word_enc];
     cog_class curr_class = cognates[curr_town][curr_word_enc];
     double class_probs [cog_class_ct];
