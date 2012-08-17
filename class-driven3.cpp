@@ -9,7 +9,7 @@
 using namespace std;
 
 
-#define GAMMA 100
+#define GAMMA 20
 #define DELTA 1.0
 #define EPSILON 10.0
 #define ITER 25000
@@ -1501,6 +1501,8 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
       singleton = true;
     map<cog_class, enc_word*>::iterator it1;
     vector<enc_town>::iterator it;
+    int r = 0;
+    int s = 0;
     // calculate the probability for every class
     for (it1=cognate_classes.begin(); it1 != cognate_classes.end(); it1++) {
       cog_class new_class = it1->first;
@@ -1518,6 +1520,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	skip = true;
       }
       else {
+	++r;
 	bool has_near_neighbor = false;
 	for (it=neighbors[curr_town].begin(); it != neighbors[curr_town].end(); it++) {
 	  enc_word neighbor_word = cognate_classes[new_class][*it];
@@ -1545,6 +1548,7 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
 	}
       }
       // if the above case is true, we need to calculate the probability
+
 /*
       
       
@@ -1683,10 +1687,12 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
       /*}*/
       if (!skip)
 	change_prob = find_change_prob (town_dicts, curr_town, curr_word_enc, curr_count, curr_class, new_class, class_count);
+      }
       // add the probability to the list
       class_probs[new_class] = change_prob;
       total_prob += change_prob;
     }
+    //wcout << r << "\t" << s << endl;
     // randomly assign our word to a cognate class, weighted by the probabilities of it going there as calculated above
     double running_total = 0;
     int target = rand();
@@ -1759,14 +1765,16 @@ void find_cognates (map<enc_town, map<wstring, float> >& town_dicts, const char*
     for (int j=0; j < town_enc_ct; j++) {
       if (corr_totals[i][j] > 0) {
 	outfile << town_decoding[i].first << "," << town_decoding[i].second << "\t" << town_decoding[j].first << "," << town_decoding[j].second << endl;
-	multimap<int, enc_change> counts;
+	multimap<pair<float, int>, enc_change> counts;
 	for (int k=0; k < (enc_ct+1)*512; k++) {
-	  if (corr_counts[i][j][k] > 0 && k/512 != k%512)
-	    counts.insert (pair<int, enc_change> (corr_counts[i][j][k], k));
+	  if (corr_counts[i][j][k] > 0 && k/512 != k%512) {
+	    pair<float, int> new_pair = pair<float, int> (float(corr_counts[i][j][k])/corr_totals[i][j][k/512], corr_counts[i][j][k]);
+	    counts.insert (pair<pair<float, int>, enc_change> (new_pair, k));
+	  }
 	}
-	multimap<int, enc_change>::reverse_iterator it;
+	multimap<pair<float, int>, enc_change>::reverse_iterator it;
 	for (it=counts.rbegin(); it != counts.rend(); it++)
-	  outfile << it->first << "\t" << WChar_to_UTF8 (represent_change(it->second).c_str()) << "\t" << it->second << endl;
+	  outfile << it->first.first << "\t" << it->first.second << "\t" << WChar_to_UTF8 (represent_change(it->second).c_str()) << "\t" << it->second << endl;
 	outfile << endl;
       }
     }
